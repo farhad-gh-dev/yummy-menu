@@ -1,0 +1,60 @@
+.navbar {
+  padding: 20px;
+
+  &::after {
+    clear: both;
+    display: table;
+    content: " ";
+  }
+
+  .left-side {
+    float: left;
+    padding-left: 10px;
+
+    img {
+      width: 50px;
+    }
+  }
+
+  .right-side {
+    float: right;
+    padding-top: 5px;
+
+    .shopping-card {
+      img {
+        width: 30px;
+      }
+    }
+    .dropdown-menu {
+      .button {
+        flex-direction: column;
+        margin-left: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #e8f7fd;
+        background: -webkit-linear-gradient(bottom right, #e8f7fd, #cedbf2);
+        background: -moz-linear-gradient(bottom right, #e8f7fd, #cedbf2);
+        background: linear-gradient(to top left, #e8f7fd, #cedbf2);
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+
+        .bar {
+          display: inline-block;
+          width: 14px;
+          height: 2px;
+          border-radius: 100px;
+          background-color: #1a1a1a;
+          margin-bottom: 3px;
+
+          &.middle {
+            width: 8px;
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

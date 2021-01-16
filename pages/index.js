@@ -1,17 +1,16 @@
 import Head from "next/head";
-import Image from "next/image";
+
+import Navbar from "../components/navbar/Navbar";
 
 export default function Home() {
   return (
-    <div className="menu-page page-padding light-mode">
+    <div className="menu-page light-mode">
       <Head>
         <title>Yummy Menu</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <div className="test">test</div>
-      </main>
+      <Navbar logo_img_src="/logo/logo-light.svg" />
     </div>
   );
 }

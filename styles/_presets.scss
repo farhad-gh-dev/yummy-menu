@@ -17,19 +17,55 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.w-100 {
+  width: 100% !important;
+}
+
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button {
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .page-padding {
   padding: 20px 30px 35px;
 }
 
-.text-cap {
-  text-transform: capitalize;
-}
-
 .light-mode {
   color: $light_theme_primary_text_color !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.d-inline-block {
+  display: inline-block !important;
+}
+
+.d-flex {
+  display: flex !important;
+
+  &.justify-content-center {
+    justify-content: center !important;
+  }
+
+  &.align-items-center {
+    align-items: center !important;
+  }
+
+  &.justify-space-between {
+    justify-content: space-between;
+  }
+}
+
+.text-cap {
+  text-transform: capitalize;
 }
