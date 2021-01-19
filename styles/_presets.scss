@@ -66,6 +66,27 @@ button {
   }
 }
 
+.p-relative {
+  position: relative !important;
+}
+
+.p-absolute {
+  position: absolute !important;
+
+  &.from-top {
+    top: 0 !important;
+  }
+  &.from-bottom {
+    bottom: 0 !important;
+  }
+  &.from-left {
+    left: 0 !important;
+  }
+  &.from-right {
+    right: 0 !important;
+  }
+}
+
 .text-cap {
-  text-transform: capitalize;
+  text-transform: capitalize !important;
 }

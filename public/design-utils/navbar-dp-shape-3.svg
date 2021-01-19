@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="259" height="66.992" viewBox="0 0 259 66.992">
+  <defs>
+    <filter id="navbar-dp-shape-3" x="0" y="0" width="259" height="66.992" filterUnits="userSpaceOnUse">
+      <feOffset dx="2" dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#navbar-dp-shape-3)">
+    <path id="navbar-dp-shape-3-2" data-name="navbar-dp-shape-3" d="M15.88,2.131s36-2.854,61.054-3.642c41.108-1.292,74.6.468,114.823,1.379s46.057,2.263,46.057,2.263c8.183,0,11.463,5.593,11.463,12.492V26.7a117.838,117.838,0,0,1-1.264,14.99c0,6.9-6.634,12.492-14.817,12.492,0,0-68.307,3.123-122.36,1.235S23.2,52.181,23.2,52.181c-8.183,0-20.15-4.7-20.15-11.6,0,0-4.179-6.72-3.741-13.487A87.437,87.437,0,0,1,1.063,14.623C1.063,7.724,7.7,2.131,15.88,2.131Z" transform="translate(3.22 5.47)" fill="#ccdaee"/>
+  </g>
+</svg>
