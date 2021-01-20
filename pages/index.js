@@ -10,7 +10,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar logo_img_src="/logo/logo-light.svg" />
+      <Navbar
+        LogoImageSrc="/logo/logo-light.svg"
+        orderPage="/order"
+        profilePage="/profile"
+        ordersNumber={5}
+      />
     </div>
   );
 }
