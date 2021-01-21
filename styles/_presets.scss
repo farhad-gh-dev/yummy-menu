@@ -1,3 +1,6 @@
+.test-border {
+  border: 1px solid red;
+}
 * {
   box-sizing: border-box;
 }
@@ -91,6 +94,34 @@ button {
   }
 }
 
+.text-color-light {
+  color: #ffffff !important;
+}
+
 .text-cap {
   text-transform: capitalize !important;
+}
+
+.text-weight-bold {
+  font-weight: bold !important;
+}
+
+.text-weight-normal {
+  font-weight: normal !important;
+}
+
+.text-weight-light {
+  font-weight: 300 !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
 }

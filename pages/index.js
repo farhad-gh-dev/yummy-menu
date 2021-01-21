@@ -1,8 +1,19 @@
+import { useState } from "react";
 import Head from "next/head";
 
 import Navbar from "../components/navbar/Navbar";
 
 export default function Home() {
+  const [themeIsLight, setThemeIsLight] = useState(true);
+
+  const themeModeHandler = () => {
+    setThemeIsLight(!themeIsLight);
+  };
+
+  const logoutHandler = () => {
+    console.log("logged-out");
+  };
+
   return (
     <div className="menu-page light-mode">
       <Head>
@@ -11,10 +22,10 @@ export default function Home() {
       </Head>
 
       <Navbar
-        LogoImageSrc="/logo/logo-light.svg"
-        orderPage="/order"
-        profilePage="/profile"
         ordersNumber={5}
+        logoutHandler={() => logoutHandler()}
+        themeMode={themeIsLight ? "light" : "dark"}
+        themeModeHandler={() => themeModeHandler()}
       />
     </div>
   );
