@@ -1,14 +1,10 @@
-import { useState } from "react";
 import Head from "next/head";
+import useThemeMode from "../hooks/useThemeMode";
 
 import Navbar from "../components/navbar/Navbar";
 
 export default function Home() {
-  const [themeIsLight, setThemeIsLight] = useState(true);
-
-  const themeModeHandler = () => {
-    setThemeIsLight(!themeIsLight);
-  };
+  const { themeIsDark, themeModeHandler } = useThemeMode();
 
   const logoutHandler = () => {
     console.log("logged-out");
@@ -23,9 +19,9 @@ export default function Home() {
 
       <Navbar
         ordersNumber={5}
-        logoutHandler={() => logoutHandler()}
-        themeMode={themeIsLight ? "light" : "dark"}
-        themeModeHandler={() => themeModeHandler()}
+        logoutHandler={logoutHandler}
+        themeIsDark={themeIsDark}
+        themeModeHandler={themeModeHandler}
       />
     </div>
   );

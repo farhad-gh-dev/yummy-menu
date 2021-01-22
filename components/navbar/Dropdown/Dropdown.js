@@ -19,7 +19,9 @@ const DropdownLink = ({ icon, text, bgShape, targetLink }) => {
   );
 };
 
-export default function Dropdown({ logoutHandler }) {
+export default function Dropdown(props) {
+  const { logoutHandler, themeIsDark, themeModeHandler } = props;
+
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
 
   const handleDropdownStatus = () => {
@@ -77,9 +79,24 @@ export default function Dropdown({ logoutHandler }) {
               className="item-bg-shape w-100 h-100 p-absolute from-right"
             />
             <div className="item-text text-cap">theme mode</div>
-            <div className="mode-toggler d-flex align-items-center justify-content-center text-cap">
-              <div className="mode-icon"></div>
-              {/* <div className="mode-title">light</div> */}
+            <div
+              className={`mode-toggler d-flex align-items-center justify-content-center text-cap${
+                themeIsDark ? " dark-mode" : ""
+              }`}
+              onClick={() => themeModeHandler()}
+            >
+              <div className="mode-icon-container">
+                <img
+                  src="/design-utils/sun.svg"
+                  alt="light mode"
+                  className={`mode-icon${!themeIsDark ? " show" : ""}`}
+                />
+                <img
+                  src="/design-utils/moon.svg"
+                  alt="dark mode"
+                  className={`mode-icon${themeIsDark ? " show" : ""}`}
+                />
+              </div>
             </div>
           </div>
         </div>

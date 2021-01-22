@@ -123,28 +123,52 @@
 
       .mode-toggler {
         position: relative;
-        margin-left: 8px;
-        height: 20px;
+        margin-left: 9px;
+        height: 24px;
         width: 40px;
-        background-color: #fff;
+        cursor: pointer;
+        background-color: #e7f4f8;
+        color: #1a1a1a;
         border-radius: 15px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        transition: 0.3s ease-in-out;
 
-        .mode-icon {
-          position: absolute;
-          top: 50%;
-          right: 1px;
-          transform: translateY(-50%);
-          width: 18px;
-          height: 18px;
-          background-color: #ffffff;
-          border: 1px solid black;
-          border-radius: 50%;
+        &.dark-mode {
+          background-color: #1a1a1a;
+          color: #ffffff;
+
+          .mode-icon-container {
+            right: 17px;
+          }
         }
 
-        .mode-title {
-          font-weight: bold;
-          font-size: 10px;
-          color: #fff;
+        .mode-icon-container {
+          position: absolute;
+          top: 50%;
+          right: 3px;
+          transform: translateY(-50%);
+          width: 18px;
+          height: 17px;
+          background-color: #ffffff;
+          border-radius: 50%;
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+          transition: 0.3s ease-in-out;
+
+          .mode-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 11px;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s ease-in-out;
+
+            &.show {
+              visibility: visible;
+              opacity: 1;
+            }
+          }
         }
       }
     }

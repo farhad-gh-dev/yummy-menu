@@ -2,7 +2,7 @@ import Link from "next/link";
 import Dropdown from "./DropDown/Dropdown";
 
 export default function Navbar(props) {
-  const { ordersNumber, logoutHandler, themeMode, themeModeHandler } = props;
+  const { ordersNumber, logoutHandler, themeIsDark, themeModeHandler } = props;
 
   return (
     <div className="navbar">
@@ -26,7 +26,11 @@ export default function Navbar(props) {
             ) : null}
           </a>
         </Link>
-        <Dropdown logoutHandler={logoutHandler} />
+        <Dropdown
+          logoutHandler={logoutHandler}
+          themeIsDark={themeIsDark}
+          themeModeHandler={themeModeHandler}
+        />
       </div>
     </div>
   );
