@@ -1,0 +1,36 @@
+.type-menu {
+  grid-template-columns: repeat(3, 1fr);
+
+  .menu-item {
+    padding: 15px;
+    position: relative;
+
+    &.active {
+      .item-title {
+        margin-bottom: 14px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+
+    .item-title {
+      font-size: 12px;
+      margin-bottom: 15px;
+      transition: 0.2s ease-in-out;
+    }
+
+    .bg-shape {
+      width: 100%;
+      -webkit-filter: drop-shadow(5px 10px 15px rgba(0, 0, 0, 0.15));
+      filter: drop-shadow(5px 10px 15px rgba(0, 0, 0, 0.15));
+    }
+
+    .item-shape {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 25px;
+    }
+  }
+}

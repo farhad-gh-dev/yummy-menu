@@ -49,6 +49,10 @@ button {
   color: $light_theme_primary_text_color !important;
 }
 
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
 .d-block {
   display: block !important;
 }
@@ -69,8 +73,16 @@ button {
   }
 
   &.justify-space-between {
-    justify-content: space-between;
+    justify-content: space-between !important;
   }
+
+  &.flex-column {
+    flex-direction: column !important;
+  }
+}
+
+.d-grid {
+  display: grid !important;
 }
 
 .p-relative {

@@ -1,0 +1,27 @@
+.items-cards {
+  .categories {
+    width: 100%;
+    overflow-x: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    padding: 10px 0;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category {
+      display: inline-block;
+      font-size: 13px;
+      text-align: center;
+      text-transform: capitalize;
+      padding: 0 15px;
+
+      &.active {
+        font-size: 15px;
+        font-weight: bold;
+      }
+    }
+  }
+}
