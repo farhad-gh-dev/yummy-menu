@@ -1,11 +1,14 @@
 .items-cards {
-  .categories {
+  overflow-y: auto;
+
+  .cards-categories {
     width: 100%;
     overflow-x: auto;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
     white-space: nowrap;
-    padding: 10px 0;
 
     &::-webkit-scrollbar {
       display: none;
@@ -16,11 +19,50 @@
       font-size: 13px;
       text-align: center;
       text-transform: capitalize;
-      padding: 0 15px;
+      padding: 10px 15px;
+      transform: translateY(0);
+      transition: 0.3s ease-in-out;
+      cursor: pointer;
 
       &.active {
+        position: relative;
         font-size: 15px;
         font-weight: bold;
+        transform: translateY(-10px);
+
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: 0px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background-color: $secondary_color;
+        }
+      }
+    }
+  }
+
+  .cards-container {
+    padding: 30px 0;
+    flex: 1 1 auto;
+    height: 0px;
+    white-space: nowrap;
+    overflow-x: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    .item-card {
+      height: 100%;
+      padding: 50px 0;
+      margin-right: 30px;
+      display: inline-block;
+      .background-shape {
+        height: 100%;
       }
     }
   }

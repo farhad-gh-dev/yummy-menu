@@ -14,7 +14,7 @@ export default function TypeMenu() {
   };
 
   return (
-    <div className="type-menu w-100 d-grid">
+    <div className="type-menu d-grid">
       {testData.map((item) => {
         return (
           <div

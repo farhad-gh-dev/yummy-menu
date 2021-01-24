@@ -1,6 +1,11 @@
 .test-border {
   border: 1px solid red;
 }
+
+.test-border-2 {
+  border: 1px solid blue;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -53,6 +58,22 @@ button {
   overflow: hidden !important;
 }
 
+.overflow-y-hidden {
+  overflow-y: hidden !important;
+}
+
+.overflow-y-auto {
+  overflow-y: auto !important;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden !important;
+}
+
+.overflow-x-auto {
+  overflow-x: auto !important;
+}
+
 .d-block {
   display: block !important;
 }
@@ -79,6 +100,10 @@ button {
   &.flex-column {
     flex-direction: column !important;
   }
+}
+
+.flex-fill {
+  flex-grow: 1 !important;
 }
 
 .d-grid {

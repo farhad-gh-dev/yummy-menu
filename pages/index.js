@@ -26,8 +26,8 @@ export default function Home() {
         themeModeHandler={themeModeHandler}
       />
 
-      <div className="menu-container d-flex flex-column h-100">
-        <div className="h-100 overflow-hidden">
+      <div className="menu-container d-flex flex-column flex-fill">
+        <div className="flex-fill">
           <ItemsCards />
         </div>
         <div>

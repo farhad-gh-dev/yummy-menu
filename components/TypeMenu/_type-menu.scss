@@ -1,9 +1,15 @@
 .type-menu {
+  width: 100%;
   grid-template-columns: repeat(3, 1fr);
 
+  @include md-size {
+    width: 400px;
+  }
+
   .menu-item {
-    padding: 15px;
+    padding: 0 15px;
     position: relative;
+    text-align: center;
 
     &.active {
       .item-title {
@@ -20,7 +26,7 @@
     }
 
     .bg-shape {
-      width: 100%;
+      height: 70px;
       -webkit-filter: drop-shadow(5px 10px 15px rgba(0, 0, 0, 0.15));
       filter: drop-shadow(5px 10px 15px rgba(0, 0, 0, 0.15));
     }
