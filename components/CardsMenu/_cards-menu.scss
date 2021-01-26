@@ -1,4 +1,4 @@
-.items-cards {
+.cards-menu {
   .cards-categories {
     width: 100%;
     overflow-x: auto;
@@ -76,16 +76,16 @@
           }
         }
         .item-text {
-          width: 81%;
-          padding-left: 30px;
+          width: 78%;
+          padding-left: 25px;
           white-space: pre-wrap;
 
           .title {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             margin-bottom: 10px;
           }
           .description {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             line-height: 20px;
           }
         }
@@ -99,6 +99,28 @@
           border-top-left-radius: 0;
           background-color: #1a1a1a;
           color: #fff;
+        }
+
+        .item-counter {
+          position: absolute;
+          top: 50%;
+          right: 16px;
+
+          .increase,
+          .decrease {
+            img {
+              width: 25px;
+            }
+          }
+
+          .increase {
+            margin-bottom: 10px;
+          }
+
+          .order-number {
+            margin-bottom: 7px;
+            font-size: 16px;
+          }
         }
 
         .favorite-button {

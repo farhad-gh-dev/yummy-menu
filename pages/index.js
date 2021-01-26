@@ -1,16 +1,16 @@
 import Head from "next/head";
 import useThemeMode from "../hooks/useThemeMode";
+import useOrderData from "../hooks/useOrderData";
 
 import Navbar from "../components/navbar/Navbar";
 import TypeMenu from "../components/TypeMenu/TypeMenu";
-import ItemsCards from "../components/ItemsCards/ItemCards";
+import CardsMenu from "../components/CardsMenu/CardsMenu";
 
 export default function Home() {
   const { themeIsDark, themeModeHandler } = useThemeMode();
+  const { orderData, toggleItemInOrder } = useOrderData();
 
-  const logoutHandler = () => {
-    console.log("logged-out");
-  };
+  const logoutHandler = () => console.log("logged-out");
 
   return (
     <div className="menu-page d-flex flex-column">
@@ -20,7 +20,7 @@ export default function Home() {
       </Head>
 
       <Navbar
-        ordersNumber={5}
+        ordersNumber={orderData.length}
         logoutHandler={logoutHandler}
         themeIsDark={themeIsDark}
         themeModeHandler={themeModeHandler}
@@ -28,7 +28,7 @@ export default function Home() {
 
       <div className="menu-container d-flex flex-column flex-fill">
         <div className="flex-fill">
-          <ItemsCards />
+          <CardsMenu toggleItemInOrder={toggleItemInOrder} />
         </div>
         <div>
           <TypeMenu />
