@@ -1,5 +1,5 @@
 export default function ItemCard(props) {
-  const { title, description } = props;
+  const { title, description, image } = props;
 
   return (
     <div className="item-card p-relative">
@@ -10,15 +10,11 @@ export default function ItemCard(props) {
       />
       <div className="card-content cover-parent">
         <div className="item-image">
-          <img src="/design-utils/temp/burger.png" alt="item image" />
+          <img src={image} alt="item image" />
         </div>
         <div className="item-text secondary-font">
-          <div className="title text-weight-bold">Steak Delight</div>
-          <div className="description">
-            One advanced diverted domestic sex repeated bringing you old.
-            Possible procured her trifling laughter thoughts property she met
-            way.
-          </div>
+          <div className="title text-weight-bold text-cap">{title}</div>
+          <div className="description">{description}</div>
         </div>
         <button className="add-button text-cap">add item</button>
         <div className="item-counter text-center">

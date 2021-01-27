@@ -1,46 +1,50 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import ItemCard from "./ItemCard/ItemCard";
 
-export default function CardsMenu() {
-  const testData = [
-    { title: "singles" },
-    { title: `today's specials` },
-    { title: "combo" },
-    { title: "singles 2" },
-    { title: `today's specials 2` },
-    { title: "combo 2" },
-  ];
+export default function CardsMenu(props) {
+  const { menuData } = props;
 
-  const [activeCategory, setActiveCategory] = useState(`today's specials`);
+  const [activeCategory, setActiveCategory] = useState("today's specials");
 
   const activeCategoryHandler = (categoryTitle) => {
     setActiveCategory(categoryTitle);
   };
 
-  return (
-    <div className="cards-menu h-100 d-flex flex-column">
-      <div className="cards-categories">
-        {testData.map((item) => {
-          return (
-            <div
-              className={`category${
-                activeCategory === item.title ? " active" : ""
-              }`}
-              onClick={() => activeCategoryHandler(item.title)}
-            >
-              {item.title}
-            </div>
-          );
-        })}
-      </div>
-      <div className="cards-container">
-        <div className="h-100 d-inline-block">
-          <ItemCard />
-          <ItemCard />
-          <ItemCard />
+  if (menuData)
+    return (
+      <div className="cards-menu h-100 d-flex flex-column">
+        <div className="cards-categories">
+          {Object.keys(menuData).map((categoryTitle) => {
+            return (
+              <div
+                key={categoryTitle}
+                className={`category${
+                  activeCategory === categoryTitle ? " active" : ""
+                }`}
+                onClick={() => activeCategoryHandler(categoryTitle)}
+              >
+                {categoryTitle}
+              </div>
+            );
+          })}
+        </div>
+        <div className="cards-container">
+          <div className="flex-fill d-inline-block">
+            {menuData[activeCategory].map((item) => {
+              return (
+                <ItemCard
+                  key={item.title}
+                  title={item.title}
+                  description={item.description}
+                  image={item.image}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+
+  return <div className="loading">loading...</div>;
 }

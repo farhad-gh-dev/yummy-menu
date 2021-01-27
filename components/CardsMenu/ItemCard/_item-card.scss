@@ -1,0 +1,83 @@
+.item-card {
+  padding: 30px 0;
+  margin-right: 30px;
+  display: inline-block;
+  .background-shape {
+    height: auto;
+    width: 290px;
+    -webkit-filter: drop-shadow(5px 0px 15px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(5px 0px 25px rgba(0, 0, 0, 0.1));
+  }
+
+  .card-content {
+    .item-image {
+      margin-bottom: 30px;
+      img {
+        max-width: 55%;
+        height: 140px;
+        transform: translateX(20%);
+        -webkit-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+        filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+      }
+    }
+    .item-text {
+      width: 78%;
+      padding-left: 25px;
+      white-space: pre-wrap;
+
+      .title {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+      }
+      .description {
+        font-size: 1.2rem;
+        line-height: 20px;
+      }
+    }
+
+    .add-button {
+      padding: 15px 30px;
+      position: absolute;
+      bottom: 10px;
+      right: 0;
+      border-radius: 30px;
+      border-top-left-radius: 0;
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+
+    .item-counter {
+      position: absolute;
+      top: 50%;
+      right: 16px;
+
+      .increase,
+      .decrease {
+        img {
+          width: 25px;
+        }
+      }
+
+      .increase {
+        margin-bottom: 10px;
+      }
+
+      .order-number {
+        margin-bottom: 7px;
+        font-size: 16px;
+      }
+    }
+
+    .favorite-button {
+      position: absolute;
+      top: 55px;
+      right: 20px;
+
+      img {
+        width: 35px;
+        -webkit-filter: drop-shadow(2px 5px 8px rgba(0, 0, 0, 0.3));
+        filter: drop-shadow(2px 5px 8px rgba(0, 0, 0, 0.3));
+      }
+    }
+  }
+}

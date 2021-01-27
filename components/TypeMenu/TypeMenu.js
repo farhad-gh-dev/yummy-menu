@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export default function TypeMenu() {
-  const [activeItem, setActiveItem] = useState("burger");
+export default function TypeMenu(props) {
+  const { activeType, activeTypeHandler } = props;
 
   const testData = [
     { title: "burger", icon: "/design-utils/burger.png" },
@@ -9,22 +9,18 @@ export default function TypeMenu() {
     { title: "drink", icon: "/design-utils/drink.png" },
   ];
 
-  const activeItemHandler = (itemTitle) => {
-    setActiveItem(itemTitle);
-  };
-
   return (
     <div className="type-menu d-grid">
       {testData.map((item) => {
         return (
           <div
             key={item.title}
-            className={`menu-item${activeItem === item.title ? " active" : ""}`}
+            className={`menu-item${activeType === item.title ? " active" : ""}`}
           >
             <div className="item-title text-center text-cap">{item.title}</div>
             <div
               className="p-relative"
-              onClick={() => activeItemHandler(item.title)}
+              onClick={() => activeTypeHandler(item.title)}
             >
               <img
                 src="/design-utils/type-menu-shape.svg"

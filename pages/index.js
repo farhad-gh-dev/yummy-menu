@@ -1,5 +1,6 @@
 import Head from "next/head";
 import useThemeMode from "../hooks/useThemeMode";
+import useMenuData from "../hooks/useMenuData";
 import useOrderData from "../hooks/useOrderData";
 
 import Navbar from "../components/navbar/Navbar";
@@ -8,6 +9,7 @@ import CardsMenu from "../components/CardsMenu/CardsMenu";
 
 export default function Home() {
   const { themeIsDark, themeModeHandler } = useThemeMode();
+  const { menuData, activeType, activeTypeHandler } = useMenuData();
   const { orderData, toggleItemInOrder } = useOrderData();
 
   const logoutHandler = () => console.log("logged-out");
@@ -28,10 +30,16 @@ export default function Home() {
 
       <div className="menu-container d-flex flex-column flex-fill">
         <div className="flex-fill">
-          <CardsMenu toggleItemInOrder={toggleItemInOrder} />
+          <CardsMenu
+            menuData={menuData !== null && menuData[`${activeType}`]}
+            toggleItemInOrder={toggleItemInOrder}
+          />
         </div>
         <div>
-          <TypeMenu />
+          <TypeMenu
+            activeType={activeType}
+            activeTypeHandler={activeTypeHandler}
+          />
         </div>
       </div>
     </div>
