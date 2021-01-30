@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { v4 as uuid } from "uuid";
 
 import ItemCard from "./ItemCard/ItemCard";
 
 export default function CardsMenu(props) {
   const { menuData } = props;
 
-  const [activeCategory, setActiveCategory] = useState("today's specials");
+  const [activeCategory, setActiveCategory] = useState("popular");
 
   const activeCategoryHandler = (categoryTitle) => {
     setActiveCategory(categoryTitle);
@@ -18,7 +19,7 @@ export default function CardsMenu(props) {
           {Object.keys(menuData).map((categoryTitle) => {
             return (
               <div
-                key={categoryTitle}
+                key={uuid()}
                 className={`category${
                   activeCategory === categoryTitle ? " active" : ""
                 }`}
@@ -34,7 +35,7 @@ export default function CardsMenu(props) {
             {menuData[activeCategory].map((item) => {
               return (
                 <ItemCard
-                  key={item.title}
+                  key={uuid}
                   title={item.title}
                   description={item.description}
                   image={item.image}
