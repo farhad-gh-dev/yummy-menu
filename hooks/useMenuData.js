@@ -65,19 +65,42 @@ const fakeData = {
       },
     ],
   },
-  drink: {
-    "today's specials": [
+  pizza: {
+    popular: [
       {
         title: `coca cola`,
         description: `One advanced diverted domestic sex repeated bringing you old. Possible procured her trifling laughter thoughts property she met way.`,
         image: "/design-utils/temp/drink1.png",
       },
     ],
-    popular: [
+    other: [
       {
         title: `coca cola`,
         description: `One advanced diverted domestic sex repeated bringing you old. Possible procured her trifling laughter thoughts property she met way.`,
         image: "/design-utils/temp/drink1.png",
+      },
+    ],
+  },
+  drink: {
+    popular: [
+      {
+        title: `Caffè Americano`,
+        description: `Espresso shots topped with hot water create a light layer of crema culminating in this wonderfully rich cup with depth and nuance.`,
+        image: "/design-utils/temp/paper-cup.png",
+      },
+    ],
+    hot: [
+      {
+        title: `coca cola`,
+        description: `One advanced diverted domestic sex repeated bringing you old. Possible procured her trifling laughter thoughts property she met way.`,
+        image: "/design-utils/temp/drink1.png",
+      },
+    ],
+    cold: [
+      {
+        title: `coca cola`,
+        description: `One advanced diverted domestic sex repeated bringing you old. Possible procured her trifling laughter thoughts property she met way.`,
+        image: "/design-utils/temp/paper-cup.png",
       },
     ],
   },
