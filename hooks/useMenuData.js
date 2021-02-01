@@ -88,19 +88,59 @@ const fakeData = {
         description: `Espresso shots topped with hot water create a light layer of crema culminating in this wonderfully rich cup with depth and nuance.`,
         image: "/design-utils/temp/paper-cup.png",
       },
+      {
+        title: `Lemonade`,
+        description: `Awaken your taste buds with the zing of refreshing lemonade—this tangy, fresh sip puts a little zip in your step.`,
+        image: "/design-utils/temp/lemonade.png",
+      },
+      {
+        title: `Hot Chocolate`,
+        description: `Steamed milk and mocha sauce topped with sweetened whipped cream and a chocolate-flavoured drizzle. A timeless classic made to sweeten your spirits.`,
+        image: "/design-utils/temp/hot-chocolate.png",
+      },
     ],
     hot: [
       {
-        title: `coca cola`,
-        description: `One advanced diverted domestic sex repeated bringing you old. Possible procured her trifling laughter thoughts property she met way.`,
-        image: "/design-utils/temp/drink1.png",
+        title: `Caffè Americano`,
+        description: `Espresso shots topped with hot water create a light layer of crema culminating in this wonderfully rich cup with depth and nuance.`,
+        image: "/design-utils/temp/paper-cup.png",
+      },
+      {
+        title: `Espresso`,
+        description: `Our smooth signature Espresso Roast with rich flavour and caramelly sweetness is at the very heart of everything we do.`,
+        image: "/design-utils/temp/paper-cup.png",
+      },
+      {
+        title: `Hot Chocolate`,
+        description: `Steamed milk and mocha sauce topped with sweetened whipped cream and a chocolate-flavoured drizzle. A timeless classic made to sweeten your spirits.`,
+        image: "/design-utils/temp/hot-chocolate.png",
+      },
+      {
+        title: `Green Tea`,
+        description: `Pure green tea is steamed with milk. A perfect hot companion day or night.`,
+        image: "/design-utils/temp/green-tea.png",
       },
     ],
     cold: [
       {
-        title: `coca cola`,
-        description: `One advanced diverted domestic sex repeated bringing you old. Possible procured her trifling laughter thoughts property she met way.`,
+        title: `Iced Caffè Americano`,
+        description: `Espresso shots topped with cold water produce a light layer of crema, then served over ice. The result: a wonderfully rich cup with depth and nuance.`,
         image: "/design-utils/temp/paper-cup.png",
+      },
+      {
+        title: `Iced Espresso`,
+        description: `Our signature Espresso Roast over ice boasts rich, robust flavor. A recipe of perfection at the heart of handcrafted espresso we serve.`,
+        image: "/design-utils/temp/paper-cup.png",
+      },
+      {
+        title: `Lemonade`,
+        description: `Awaken your taste buds with the zing of refreshing lemonade—this tangy, fresh sip puts a little zip in your step.`,
+        image: "/design-utils/temp/lemonade.png",
+      },
+      {
+        title: `Iced Pineapple Matcha`,
+        description: `Our premium matcha green tea shaken with flavors of pineapple and ginger along with coconutmilk and ice for a delicious beverage to uplift your day.`,
+        image: "/design-utils/temp/iced-pineapple-matcha.png",
       },
     ],
   },
