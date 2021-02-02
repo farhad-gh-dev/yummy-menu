@@ -30,10 +30,14 @@ export default function Home() {
 
       <div className="menu-container d-flex flex-column flex-fill">
         <div className="flex-fill">
-          <CardsMenu
-            menuData={menuData !== null && menuData[`${activeType}`]}
-            toggleItemInOrder={toggleItemInOrder}
-          />
+          {menuData !== null ? (
+            <CardsMenu
+              menuData={menuData[`${activeType}`]}
+              toggleItemInOrder={toggleItemInOrder}
+            />
+          ) : (
+            <div>loading...</div>
+          )}
         </div>
         <div>
           <TypeMenu
