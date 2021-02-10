@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const fakeData_two = {
+const fakeData = {
   restaurantName: "main",
   restaurantMenu: [
     {
@@ -219,27 +219,20 @@ const useMenuData = () => {
   const [activeType, setActiveType] = useState(null);
 
   const activeTypeHandler = (typeTitle) => {
-    const prevMenuData = menuData;
-
-    setMenuData(null);
-
-    setTimeout(() => {
-      setMenuData(prevMenuData);
-      setActiveType(typeTitle);
-    }, 500);
+    if (activeType !== typeTitle) setActiveType(typeTitle);
   };
 
   useEffect(() => {
     const menuFetch = () => {
       let menuTypes = [];
-      fakeData_two.restaurantMenu.map((item) => {
+      fakeData.restaurantMenu.map((item) => {
         if (!menuTypes.includes(item.type)) menuTypes.push(item.type);
       });
 
       let formattedMenu = {};
       menuTypes.map((type) => {
         let itemByType = [];
-        fakeData_two.restaurantMenu.map((item) => {
+        fakeData.restaurantMenu.map((item) => {
           if (type === item.type) {
             itemByType.push(item);
           }
@@ -248,6 +241,45 @@ const useMenuData = () => {
           ...formattedMenu,
           [type]: itemByType,
         };
+      });
+
+      Object.keys(formattedMenu).map((type) => {
+        let popularItems = formattedMenu[type]
+          .sort((a, b) =>
+            a.orderedTimes > b.orderedTimes
+              ? -1
+              : b.orderedTimes > a.orderedTimes
+              ? 1
+              : 0
+          )
+          .slice(0, 3);
+
+        let itemCategories = ["popular"];
+        formattedMenu[type].map((item) => {
+          if (!itemCategories.includes(item.category)) {
+            itemCategories.push(item.category);
+          }
+          return null;
+        });
+
+        let itemsInCategories = {};
+        itemCategories.map((categoryTitle) => {
+          if (categoryTitle === "popular") {
+            itemsInCategories = {
+              ...itemsInCategories,
+              [categoryTitle]: popularItems,
+            };
+          } else {
+            itemsInCategories = {
+              ...itemsInCategories,
+              [categoryTitle]: formattedMenu[type].filter(
+                (item) => categoryTitle === item.category
+              ),
+            };
+          }
+        });
+
+        formattedMenu[type] = itemsInCategories;
       });
 
       return formattedMenu;
