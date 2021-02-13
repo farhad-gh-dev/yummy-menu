@@ -10,7 +10,12 @@ import CardsMenu from "../components/CardsMenu/CardsMenu";
 export default function Home() {
   const { themeIsDark, themeModeHandler } = useThemeMode();
   const { menuData, activeType, activeTypeHandler } = useMenuData();
-  const { orderData, toggleItemInOrder } = useOrderData();
+  const {
+    orderData,
+    toggleItemInOrder,
+    increaseItemQuantity,
+    decreaseItemQuantity,
+  } = useOrderData();
 
   const logoutHandler = () => console.log("logged-out");
 
@@ -22,7 +27,7 @@ export default function Home() {
       </Head>
 
       <Navbar
-        ordersNumber={orderData.length}
+        ordersNumber={orderData.items.length}
         logoutHandler={logoutHandler}
         themeIsDark={themeIsDark}
         themeModeHandler={themeModeHandler}
@@ -33,7 +38,10 @@ export default function Home() {
           {menuData !== null ? (
             <CardsMenu
               menuData={menuData[`${activeType}`]}
+              orderedItems={orderData.items}
               toggleItemInOrder={toggleItemInOrder}
+              increaseItemQuantity={increaseItemQuantity}
+              decreaseItemQuantity={decreaseItemQuantity}
             />
           ) : (
             <div>loading...</div>

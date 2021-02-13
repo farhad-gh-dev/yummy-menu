@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 
 import ItemCard from "./ItemCard/ItemCard";
 
 export default function CardsMenu(props) {
-  const { menuData } = props;
+  const {
+    menuData,
+    orderedItems,
+    toggleItemInOrder,
+    increaseItemQuantity,
+    decreaseItemQuantity,
+  } = props;
 
   const [activeCategory, setActiveCategory] = useState("popular");
 
@@ -12,7 +18,11 @@ export default function CardsMenu(props) {
     setActiveCategory(categoryTitle);
   };
 
-  if (menuData)
+  useEffect(() => {
+    setActiveCategory("popular");
+  }, [menuData]);
+
+  if (menuData && Object.keys(menuData).includes(activeCategory))
     return (
       <div className="cards-menu h-100 d-flex flex-column">
         <div className="cards-categories">
@@ -33,12 +43,17 @@ export default function CardsMenu(props) {
         <div className="cards-container">
           <div className="flex-fill d-inline-block">
             {menuData[activeCategory].map((item) => {
+              const itemOrderInfo = orderedItems.find(
+                (orderedItem) => orderedItem._id === item._id
+              );
               return (
                 <ItemCard
                   key={uuid}
-                  title={item.title}
-                  description={item.description}
-                  image={item.image}
+                  itemData={item}
+                  toggleItemInOrder={toggleItemInOrder}
+                  itemOrderInfo={itemOrderInfo}
+                  increaseItemQuantity={increaseItemQuantity}
+                  decreaseItemQuantity={decreaseItemQuantity}
                 />
               );
             })}
