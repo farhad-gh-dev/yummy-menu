@@ -1,4 +1,5 @@
 import Head from "next/head";
+import axios from "axios";
 import useThemeMode from "../hooks/useThemeMode";
 import useMenuData from "../hooks/useMenuData";
 import useOrderData from "../hooks/useOrderData";
@@ -7,9 +8,9 @@ import Navbar from "../components/navbar/Navbar";
 import TypeMenu from "../components/TypeMenu/TypeMenu";
 import CardsMenu from "../components/CardsMenu/CardsMenu";
 
-export default function Home() {
+export default function Home({ fetchedData }) {
   const { themeIsDark, themeModeHandler } = useThemeMode();
-  const { menuData, activeType, activeTypeHandler } = useMenuData();
+  const { menuData, activeType, activeTypeHandler } = useMenuData(fetchedData);
   const {
     orderData,
     toggleItemInOrder,
@@ -56,4 +57,20 @@ export default function Home() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const { data } = await axios.get(`http://localhost:8000/yummy-menu/main`);
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      fetchedData: data,
+    },
+  };
 }
