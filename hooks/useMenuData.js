@@ -43,8 +43,6 @@ const useMenuData = (fetchedData) => {
         )
         .slice(0, 3);
 
-      console.log(popularItems);
-
       let itemCategories = ["popular"];
       formattedMenu[type].map((item) => {
         if (!itemCategories.includes(item.category)) {
