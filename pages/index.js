@@ -11,7 +11,7 @@ import CardsMenu from "../components/CardsMenu/CardsMenu";
 
 export default function Home({ fetchedData }) {
   const { themeIsDark, themeModeHandler } = useThemeMode();
-  const { userIsLogged } = useAuth();
+  // const { userIsLogged } = useAuth();
   const { menuData, activeType, activeTypeHandler } = useMenuData(fetchedData);
   const {
     orderData,
@@ -22,7 +22,7 @@ export default function Home({ fetchedData }) {
 
   const logoutHandler = () => console.log("logged-out");
 
-  if (userIsLogged)
+  if (true)
     return (
       <div className="menu-page d-flex flex-column">
         <Head>

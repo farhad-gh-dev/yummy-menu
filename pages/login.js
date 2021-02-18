@@ -1,7 +1,16 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
+import useAuth from "../hooks/useAuth";
 
 export default function Login() {
+  const { formData, formHandler, guestUser, signInHandler } = useAuth({
+    username: "",
+    password: "",
+  });
+
+  const [showPassword, setShowPassword] = useState(false);
+
   if (true)
     return (
       <div className="login-page">
@@ -9,7 +18,7 @@ export default function Login() {
           <title>Yummy Menu</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <div className="d-flex flex-column h-100">
+        <div className="login-panel d-flex flex-column h-100">
           <div className="flex-fill">
             <div className="logo-container text-center">
               <img
@@ -22,29 +31,33 @@ export default function Login() {
               <div className="input-container">
                 <input
                   type="text"
+                  name="username"
+                  value={formData.username}
                   placeholder="Username, Email Address"
-                  onChange={(e) => console.log(e.target.value)}
+                  onChange={(e) => formHandler(e)}
                 />
               </div>
               <div className="input-container">
                 <input
-                  type="text"
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={formData.password}
                   placeholder="Password"
-                  onChange={(e) => console.log(e.target.value)}
+                  onChange={(e) => formHandler(e)}
                 />
                 <div
                   className="input-icon"
-                  onClick={() => console.log("password is shown")}
+                  onClick={() => setShowPassword(!showPassword)}
                 >
                   <img src="/design-utils/eye.png" alt="show password" />
                 </div>
               </div>
             </div>
-            <div className="guest-user-container d-flex align-items-center justify-content-center">
+            <div className="guest-user-container text-center">
               <span className="text-cap">enter as</span>
               <button
                 className="guest-user-btn text-cap"
-                onClick={() => console.log("clicked")}
+                onClick={() => guestUser()}
               >
                 guest user
               </button>
@@ -53,11 +66,11 @@ export default function Login() {
           <div>
             <button
               className="sign-in-btn w-100 text-uppercase"
-              onClick={() => console.log("sign-in clicked")}
+              onClick={() => signInHandler(formData)}
             >
               sing in
             </button>
-            <div className="sign-up-container d-flex align-items-center justify-content-center">
+            <div className="sign-up-container text-center">
               <span className="text-cap">don't have an account,</span>
               <Link href="/sign-up">
                 <a className="sign-up-link text-cap">sign up</a>
