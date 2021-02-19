@@ -1,7 +1,7 @@
 import Head from "next/head";
 import axios from "axios";
 import useThemeMode from "../hooks/useThemeMode";
-import useAuth from "../hooks/useAuth";
+import useTokenCheckInApp from "../hooks/useTokenCheckInApp";
 import useMenuData from "../hooks/useMenuData";
 import useOrderData from "../hooks/useOrderData";
 
@@ -11,7 +11,7 @@ import CardsMenu from "../components/CardsMenu/CardsMenu";
 
 export default function Home({ fetchedData }) {
   const { themeIsDark, themeModeHandler } = useThemeMode();
-  // const { userIsLogged } = useAuth();
+  const { isLoading } = useTokenCheckInApp();
   const { menuData, activeType, activeTypeHandler } = useMenuData(fetchedData);
   const {
     orderData,
@@ -22,7 +22,7 @@ export default function Home({ fetchedData }) {
 
   const logoutHandler = () => console.log("logged-out");
 
-  if (true)
+  if (!isLoading)
     return (
       <div className="menu-page d-flex flex-column">
         <Head>

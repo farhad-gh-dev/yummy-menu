@@ -1,17 +1,21 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
-import useAuth from "../hooks/useAuth";
+import useAuthForm from "../hooks/useAuthForm";
+import useTokenCheckInAuth from "../hooks/useTokenCheckInAuth";
 
-export default function Login() {
-  const { formData, formHandler, guestUser, signInHandler } = useAuth({
+import Loading from "../components/Loading/Loading";
+
+export default function signIn() {
+  const { isLoading } = useTokenCheckInAuth();
+  const { formData, formHandler, guestUser, signInHandler } = useAuthForm({
     username: "",
     password: "",
   });
 
   const [showPassword, setShowPassword] = useState(false);
 
-  if (true)
+  if (!isLoading)
     return (
       <div className="login-page">
         <Head>
@@ -81,5 +85,5 @@ export default function Login() {
       </div>
     );
 
-  return <div>loading...</div>;
+  return <Loading />;
 }

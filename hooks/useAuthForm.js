@@ -1,13 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Router from "next/router";
-import { route } from "next/dist/next-server/server/router";
+import formValidation from "../utils/FormValidation";
 
 const useAuth = (initialValues = null) => {
-  const [userIsLogged, setUserIsLogged] = useState(true);
   const [formData, setFromData] = useState(initialValues);
-  const [authError, setAuthError] = useState(false);
-  const [userData, setUserData] = useState(null);
+  const [authError, setAuthError] = useState({});
 
   const formHandler = (e) => {
     const inputName = e.target.name;
@@ -28,6 +26,11 @@ const useAuth = (initialValues = null) => {
   };
 
   const signInHandler = async (userInfo) => {
+    const { error } = formValidation(userInfo);
+
+    if (!error) console.log("no error");
+    return;
+
     try {
       const { data } = await axios.post(
         "http://localhost:8000/auth/login",
@@ -49,40 +52,6 @@ const useAuth = (initialValues = null) => {
 
     signInHandler(guestUserInfo);
   };
-
-  const userLogStatus = async (token) => {
-    try {
-      const { data } = await axios.get("http://localhost:8000/auth/user", {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      });
-      Router.push("/");
-    } catch {
-      errorHandler();
-    }
-  };
-
-  useEffect(() => {
-    const localToken = localStorage.getItem("token");
-
-    if (!localToken) return;
-
-    userLogStatus(localToken);
-
-    // const testFunction = async () => {
-    //   try {
-    //     const { data } = await axios.post("http://localhost:8000/auth/login", {
-    //       email: "farhad@gmail.com",
-    //       password: "521378farhaD",
-    //     });
-
-    //     console.log(data);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // };
-  }, []);
 
   return {
     formData,
