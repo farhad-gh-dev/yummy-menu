@@ -1,11 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import Router from "next/router";
-import formValidation from "../utils/FormValidation";
+import { signInValidation, singUpValidation } from "../utils/FormValidation";
 
 const useAuth = (initialValues = null) => {
   const [formData, setFromData] = useState(initialValues);
-  const [authError, setAuthError] = useState({});
+  const [ErrorMessage, setErrorMessage] = useState("");
 
   const formHandler = (e) => {
     const inputName = e.target.name;
@@ -13,23 +13,26 @@ const useAuth = (initialValues = null) => {
 
     setFromData({
       ...formData,
-      [inputName]:
-        inputName === "password" ? inputValue : inputValue.toLowerCase(),
+      [inputName]: inputValue,
     });
   };
 
-  const errorHandler = () => {
-    setAuthError(true);
+  const errorHandler = (message) => {
+    setErrorMessage(message);
     setTimeout(() => {
-      setAuthError(false);
+      setErrorMessage(null);
     }, 3000);
   };
 
   const signInHandler = async (userInfo) => {
-    const { error } = formValidation(userInfo);
+    if (ErrorMessage) return;
 
-    if (!error) console.log("no error");
-    return;
+    const { error } = signInValidation(userInfo);
+
+    if (error) {
+      errorHandler(error.message);
+      return;
+    }
 
     try {
       const { data } = await axios.post(
@@ -40,7 +43,31 @@ const useAuth = (initialValues = null) => {
       localStorage.setItem("token", data.token);
       Router.push("/");
     } catch {
-      errorHandler();
+      errorHandler("Username or Password is Wrong.");
+    }
+  };
+
+  const singUpHandler = async (userInfo) => {
+    if (ErrorMessage) return;
+
+    const { error } = singUpValidation(userInfo);
+
+    if (error) {
+      errorHandler(error.message);
+      return;
+    }
+
+    try {
+      const { data } = await axios.post(
+        "http://localhost:8000/auth/register",
+        userInfo
+      );
+
+      localStorage.setItem("token", data.token);
+      Router.push("/");
+    } catch (err) {
+      console.log(JSON.stringify(err));
+      errorHandler("registration failed.");
     }
   };
 
@@ -55,9 +82,11 @@ const useAuth = (initialValues = null) => {
 
   return {
     formData,
+    ErrorMessage,
     formHandler,
     guestUser,
     signInHandler,
+    singUpHandler,
   };
 };
 

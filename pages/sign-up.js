@@ -7,16 +7,17 @@ import useTokenCheckInAuth from "../hooks/useTokenCheckInAuth";
 import Loading from "../components/Loading/Loading";
 import ErrorPanel from "../components/Errors/ErrorPanel";
 
-export default function signIn() {
+export default function signUp() {
   const { isLoading } = useTokenCheckInAuth();
   const {
     formData,
     ErrorMessage,
     formHandler,
     guestUser,
-    signInHandler,
+    singUpHandler,
   } = useAuthForm({
-    usernameOrEmail: "",
+    email: "",
+    username: "",
     password: "",
   });
 
@@ -44,9 +45,18 @@ export default function signIn() {
               <div className="input-container">
                 <input
                   type="text"
-                  name="usernameOrEmail"
-                  value={formData.usernameOrEmail}
-                  placeholder="Username, Email Address"
+                  name="email"
+                  value={formData.email}
+                  placeholder="Email Address"
+                  onChange={(e) => formHandler(e)}
+                />
+              </div>
+              <div className="input-container">
+                <input
+                  type="text"
+                  name="username"
+                  value={formData.username}
+                  placeholder="Username"
                   onChange={(e) => formHandler(e)}
                 />
               </div>
@@ -79,14 +89,14 @@ export default function signIn() {
           <div>
             <button
               className="sign-in-btn w-100 text-uppercase"
-              onClick={() => !ErrorMessage && signInHandler(formData)}
+              onClick={() => !ErrorMessage && singUpHandler(formData)}
             >
               sing in
             </button>
             <div className="sign-up-container text-center">
-              <span className="text-cap">don't have an account,</span>
-              <Link href="/sign-up">
-                <a className="sign-up-link text-cap">sign up</a>
+              <span className="text-cap">already have an account,</span>
+              <Link href="/sign-in">
+                <a className="sign-up-link text-cap">sign in</a>
               </Link>
             </div>
           </div>
