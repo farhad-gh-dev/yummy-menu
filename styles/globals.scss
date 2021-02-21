@@ -7,7 +7,7 @@
 
 //pages
 @import "./pages/home";
-@import "./pages/login";
+@import "./pages/auth";
 
 //components
 @import "../components/Errors/error-panel";
@@ -16,3 +16,4 @@
 @import "../components/TypeMenu/type-menu";
 @import "../components/CardsMenu/cards-menu";
 @import "../components/CardsMenu/ItemCard/item-card";
+@import "../components/AuthFormPanel/auth-form-panel";

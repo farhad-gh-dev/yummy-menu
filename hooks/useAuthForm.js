@@ -3,6 +3,9 @@ import axios from "axios";
 import Router from "next/router";
 import { signInValidation, singUpValidation } from "../utils/FormValidation";
 
+const signInURL = "http://localhost:8000/auth/login";
+const signUpURL = "http://localhost:8000/auth/register";
+
 const useAuth = (initialValues = null) => {
   const [formData, setFromData] = useState(initialValues);
   const [ErrorMessage, setErrorMessage] = useState("");
@@ -35,10 +38,7 @@ const useAuth = (initialValues = null) => {
     }
 
     try {
-      const { data } = await axios.post(
-        "http://localhost:8000/auth/login",
-        userInfo
-      );
+      const { data } = await axios.post(signInURL, userInfo);
 
       localStorage.setItem("token", data.token);
       Router.push("/");
@@ -47,7 +47,7 @@ const useAuth = (initialValues = null) => {
     }
   };
 
-  const singUpHandler = async (userInfo) => {
+  const signUpHandler = async (userInfo) => {
     if (ErrorMessage) return;
 
     const { error } = singUpValidation(userInfo);
@@ -58,10 +58,7 @@ const useAuth = (initialValues = null) => {
     }
 
     try {
-      const { data } = await axios.post(
-        "http://localhost:8000/auth/register",
-        userInfo
-      );
+      const { data } = await axios.post(signUpURL, userInfo);
 
       localStorage.setItem("token", data.token);
       Router.push("/");
@@ -73,8 +70,8 @@ const useAuth = (initialValues = null) => {
 
   const guestUser = () => {
     const guestUserInfo = {
-      username: "guest-user",
-      password: "yummy-guest",
+      usernameOrEmail: "guest-user",
+      password: "Guest-user1",
     };
 
     signInHandler(guestUserInfo);
@@ -86,7 +83,7 @@ const useAuth = (initialValues = null) => {
     formHandler,
     guestUser,
     signInHandler,
-    singUpHandler,
+    signUpHandler,
   };
 };
 
