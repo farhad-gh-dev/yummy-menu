@@ -1,5 +1,33 @@
+$info_card_border_color: #6baed5;
+$edit_btn_color: #336cbc;
+$password_btn_color: #336cbc;
+
 .user-page {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+
+  .section-container {
+    padding: 25px 35px 35px;
+
+    .buttons-container {
+      button {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid $secondary_color;
+        color: $secondary_color;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .password-reset-btn {
+        border-color: $password_btn_color;
+        color: $password_btn_color;
+      }
+    }
+  }
 }

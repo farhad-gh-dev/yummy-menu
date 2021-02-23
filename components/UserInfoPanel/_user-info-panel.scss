@@ -1,0 +1,49 @@
+.user-info-panel {
+  .title {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  .info-cards-container {
+    .info-card {
+      padding: 0 15px 13px;
+      border-left: 1px solid $info_card_border_color;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: -7px;
+        left: -4px;
+        width: 7px;
+        height: 7px;
+        border-radius: 7px;
+        background-color: $info_card_border_color;
+      }
+
+      &.last {
+        border-left: 1px solid transparent;
+      }
+
+      .card-title {
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+      .card-description {
+        font-size: 16px;
+        margin-bottom: 10px;
+        margin-left: 8px;
+
+        &.multiple {
+          padding: 2px 6px 1px;
+          border-left: 2px solid rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      .edit-btn {
+        font-size: 14px;
+        padding: 0;
+        color: $edit_btn_color;
+      }
+    }
+  }
+}

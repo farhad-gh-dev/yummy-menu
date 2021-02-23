@@ -1,0 +1,10 @@
+@mixin gradient-background($deg, $first-color, $second-color) {
+  background: -webkit-linear-gradient($deg, $first-color, $second-color);
+  background: -moz-linear-gradient($deg, $first-color, $second-color);
+  background: linear-gradient($deg, $first-color, $second-color);
+}
+
+@mixin drop-shadow($x, $y, $blur, $color) {
+  -webkit-filter: drop-shadow($x $y $blur $color);
+  filter: drop-shadow($x $y $blur $color);
+}

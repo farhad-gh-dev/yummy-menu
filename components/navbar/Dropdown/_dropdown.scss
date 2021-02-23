@@ -1,3 +1,7 @@
+$dropdown_gradient_deg: -45deg;
+$dropdown_gradient_color_1: #e8f7fd;
+$dropdown_gradient_color_2: #bed0ee;
+
 .navbar-dropdown-menu {
   .dropdown-button {
     flex-direction: column;
@@ -19,9 +23,11 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      background: -webkit-linear-gradient(-45deg, #e8f7fd, #bed0ee);
-      background: -moz-linear-gradient(-45deg, #e8f7fd, #bed0ee);
-      background: linear-gradient(-45deg, #e8f7fd, #bed0ee);
+      @include gradient-background(
+        $dropdown_gradient_deg,
+        $dropdown_gradient_color_1,
+        $dropdown_gradient_color_2
+      );
       transform: rotate(360deg);
       z-index: -100;
       transform: rotate(0deg);
@@ -102,8 +108,7 @@
       }
 
       .item-bg-shape {
-        -webkit-filter: drop-shadow(2px 1px 3px rgba(0, 0, 0, 0.16));
-        filter: drop-shadow(2px 1px 3px rgba(0, 0, 0, 0.2));
+        @include drop-shadow(2px, 1px, 3px, rgba(0, 0, 0, 0.2));
         z-index: -100;
         width: 100%;
         height: 100%;

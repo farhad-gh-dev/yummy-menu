@@ -1,6 +1,7 @@
 //fonts
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap");
 
+@import "./mixins";
 @import "./variables";
 @import "./breakpoints";
 @import "./presets";
@@ -18,3 +19,4 @@
 @import "../components/CardsMenu/cards-menu";
 @import "../components/CardsMenu/ItemCard/item-card";
 @import "../components/AuthFormPanel/auth-form-panel";
+@import "../components/UserInfoPanel/user-info-panel";
