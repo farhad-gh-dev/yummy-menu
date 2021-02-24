@@ -1,6 +1,22 @@
-export default function UserInfoPanel({ userInfo }) {
+import { useState } from "react";
+
+import UserInfoInput from "./UserInfoInput/UserInfoInput";
+
+export default function UserInfoPanel({ userInfo, userInfoEditHandler }) {
+  const [activeInput, setActiveInput] = useState(null);
+
+  const clearActiveInput = () => setActiveInput(null);
+
   return (
     <div className="user-info-panel">
+      {activeInput ? (
+        <UserInfoInput
+          inputName={activeInput}
+          prevValue={userInfo[activeInput]}
+          closeHandler={clearActiveInput}
+          userInfoEditHandler={userInfoEditHandler}
+        />
+      ) : null}
       <div className="title text-cap text-weight-bold">your profile</div>
       <div className="info-cards-container">
         {Object.keys(userInfo).map((item, index, arr) => {
@@ -30,7 +46,7 @@ export default function UserInfoPanel({ userInfo }) {
 
               <button
                 className="edit-btn text-cap p-absolute from-top from-right"
-                onClick={() => console.log("edit btn clicked")}
+                onClick={() => setActiveInput(item)}
               >
                 edit
               </button>

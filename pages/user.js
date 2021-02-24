@@ -17,6 +17,13 @@ export default function User() {
     email_address: "alexmiller@gmail.com",
   });
 
+  const userInfoEditHandler = (newInfo) => {
+    setUserInfo({
+      ...userInfo,
+      ...newInfo,
+    });
+  };
+
   const logoutHandler = () => console.log("logged-out");
 
   if (isLoading) return <Loading />;
@@ -34,7 +41,10 @@ export default function User() {
 
       <div className="section-container d-flex flex-column flex-fill">
         <div className="flex-fill">
-          <UserInfoPanel userInfo={userInfo} />
+          <UserInfoPanel
+            userInfo={userInfo}
+            userInfoEditHandler={userInfoEditHandler}
+          />
         </div>
         <div className="buttons-container">
           <button

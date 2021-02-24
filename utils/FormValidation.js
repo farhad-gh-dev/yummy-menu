@@ -1,3 +1,9 @@
+const usernamePattern = new RegExp(/^[a-zA-Z0-9._-]+$/);
+const emailPattern = new RegExp(
+  /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
+);
+const phoneNumberPattern = /^\d{10}$/;
+
 const singUpValidation = (formData) => {
   let error = null;
 
@@ -12,7 +18,6 @@ const singUpValidation = (formData) => {
 
     //Validation for: valid characters for username / min and max number of characters
     if (inputName === "username") {
-      const usernamePattern = new RegExp(/^[a-zA-Z0-9._-]+$/);
       if (!usernamePattern.test(formData["username"])) {
         error = { message: "invalid username" };
         break;
@@ -29,9 +34,6 @@ const singUpValidation = (formData) => {
 
     //Validation for: valid characters for email / min and max number of characters
     if (inputName === "email") {
-      const emailPattern = new RegExp(
-        /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
-      );
       if (!emailPattern.test(formData["email"])) {
         error = { message: "invalid email address" };
         break;
@@ -122,4 +124,10 @@ const signInValidation = (formData) => {
   };
 };
 
-export { signInValidation, singUpValidation };
+export {
+  usernamePattern,
+  emailPattern,
+  phoneNumberPattern,
+  signInValidation,
+  singUpValidation,
+};
