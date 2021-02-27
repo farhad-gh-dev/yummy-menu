@@ -44,12 +44,14 @@ export default function UserInfoPanel({ userInfo, userInfoEditHandler }) {
                 </div>
               )}
 
-              <button
-                className="edit-btn text-cap p-absolute from-top from-right"
-                onClick={() => setActiveInput(item)}
-              >
-                edit
-              </button>
+              {item !== "email_address" && (
+                <button
+                  className="edit-btn text-cap p-absolute from-top from-right"
+                  onClick={() => setActiveInput(item)}
+                >
+                  edit
+                </button>
+              )}
             </div>
           );
         })}

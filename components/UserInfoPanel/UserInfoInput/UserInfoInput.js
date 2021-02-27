@@ -1,8 +1,8 @@
 import { useState } from "react";
 import {
-  usernamePattern,
-  emailPattern,
-  phoneNumberPattern,
+  validUsername,
+  validEmail,
+  validPhoneNumber,
 } from "../../../utils/FormValidation";
 
 import ErrorPanel from "../../Errors/ErrorPanel";
@@ -31,7 +31,31 @@ export default function UserInfoInput({
       return;
     }
 
-    console.log("submitted...");
+    if (inputName === "username") {
+      const error = validUsername(inputValue);
+      if (error) {
+        errorHandler(error.message);
+        return;
+      }
+    }
+
+    if (inputName === "email_address") {
+      const error = validEmail(inputValue);
+      if (error) {
+        errorHandler(error.message);
+        return;
+      }
+    }
+
+    if (inputName === "phone_number") {
+      const error = validPhoneNumber(inputValue);
+      if (error) {
+        errorHandler(error.message);
+        return;
+      }
+    }
+
+    userInfoEditHandler({ [inputName]: inputValue });
   };
 
   return (

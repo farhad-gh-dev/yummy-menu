@@ -11,10 +11,10 @@ export default function User() {
   const { isLoading } = useTokenCheckInApp();
   const { themeIsDark, themeModeHandler } = useThemeMode();
   const [userInfo, setUserInfo] = useState({
+    email_address: "alexmiller@gmail.com",
     username: "alex miller",
     phone_number: "+9113412044",
     address: ["1420  Pine Garden Lane", "3608  Park Avenue"],
-    email_address: "alexmiller@gmail.com",
   });
 
   const userInfoEditHandler = (newInfo) => {

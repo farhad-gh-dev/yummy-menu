@@ -14,7 +14,7 @@ const validUsername = (username) => {
 };
 
 const validEmail = (email) => {
-  if (!emailPattern.test(password)) return { message: "invalid email address" };
+  if (!emailPattern.test(email)) return { message: "invalid email address" };
   if (email.length < 3) return { message: "email is too short" };
   if (email.length > 254) return { message: "email is too long" };
 
@@ -33,7 +33,7 @@ const validPassword = (password) => {
 };
 
 const validPhoneNumber = (phoneNumber) => {
-  if (!phoneNumberPattern.test(password))
+  if (!phoneNumberPattern.test(phoneNumber))
     return { message: "invalid phone number" };
 };
 
