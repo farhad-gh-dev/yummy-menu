@@ -4,6 +4,7 @@ const emailPattern = new RegExp(
 );
 const passwordPattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])");
 const phoneNumberPattern = new RegExp(/^\d{10}$/);
+const addressPattern = new RegExp(/^[a-zA-Z0-9\s,'-]*$/);
 
 const validUsername = (username) => {
   if (!usernamePattern.test(username)) return { message: "invalid username" };
@@ -35,6 +36,10 @@ const validPassword = (password) => {
 const validPhoneNumber = (phoneNumber) => {
   if (!phoneNumberPattern.test(phoneNumber))
     return { message: "invalid phone number" };
+};
+
+const validAddress = (address) => {
+  if (!addressPattern.test(address)) return { message: "invalid address" };
 };
 
 const singUpValidation = (formData) => {
@@ -125,6 +130,7 @@ export {
   validEmail,
   validPassword,
   validPhoneNumber,
+  validAddress,
   signInValidation,
   singUpValidation,
 };

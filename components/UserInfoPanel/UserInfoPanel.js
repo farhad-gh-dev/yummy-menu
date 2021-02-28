@@ -13,8 +13,8 @@ export default function UserInfoPanel({ userInfo, userInfoEditHandler }) {
         <UserInfoInput
           inputName={activeInput}
           prevValue={userInfo[activeInput]}
-          closeHandler={clearActiveInput}
           userInfoEditHandler={userInfoEditHandler}
+          closeHandler={clearActiveInput}
         />
       ) : null}
       <div className="title text-cap text-weight-bold">your profile</div>
@@ -28,7 +28,7 @@ export default function UserInfoPanel({ userInfo, userInfoEditHandler }) {
               }`}
             >
               <div className="card-title text-cap">
-                {item.replace("_", " ")}
+                {item.replace(/_/g, " ")}
               </div>
               {Array.isArray(userInfo[item]) ? (
                 userInfo[item].map((d) => {

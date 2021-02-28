@@ -1,3 +1,6 @@
+$blue_btn_bg_color: #4376cf;
+$red_btn_bg_color: #fa2600;
+
 .user-info-panel {
   .title {
     font-size: 20px;
@@ -56,11 +59,54 @@
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    padding: 35px;
+    padding: 40px;
 
-    input {
-      &::placeholder {
-        text-transform: capitalize;
+    .input-panel {
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 15px;
+
+      input {
+        padding: 10px;
+        border: 1px solid transparent;
+        border-bottom: 1px solid #000000;
+        margin-bottom: 35px;
+
+        &::placeholder {
+          text-transform: capitalize;
+          color: rgba(0, 0, 0, 0.4);
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .buttons-container {
+        div {
+          width: 100%;
+          padding-left: 8px;
+          padding-right: 8px;
+
+          button {
+            width: 100%;
+            font-size: 16px;
+            text-transform: capitalize;
+            color: #ffffff;
+            padding: 9px 0;
+            border: 1px solid #ffffff;
+            box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+
+            &.blue-bg {
+              background-color: $blue_btn_bg_color;
+            }
+
+            &.red-bg {
+              background-color: $red_btn_bg_color;
+            }
+          }
+        }
       }
     }
   }

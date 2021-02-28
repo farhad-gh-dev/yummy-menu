@@ -18,6 +18,14 @@ export default function User() {
   });
 
   const userInfoEditHandler = (newInfo) => {
+    if (newInfo.address !== undefined) {
+      setUserInfo({
+        ...userInfo,
+        address: [...userInfo.address, newInfo.address],
+      });
+      return;
+    }
+
     setUserInfo({
       ...userInfo,
       ...newInfo,
@@ -46,7 +54,7 @@ export default function User() {
             userInfoEditHandler={userInfoEditHandler}
           />
         </div>
-        <div className="buttons-container">
+        <div className="submit-buttons">
           <button
             className="password-reset-btn text-cap text-weight-bold"
             onClick={() => console.log("password changed")}
