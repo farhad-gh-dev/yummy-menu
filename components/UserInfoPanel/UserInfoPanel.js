@@ -1,8 +1,14 @@
 import { useState } from "react";
 
 import UserInfoInput from "./UserInfoInput/UserInfoInput";
+import PasswordInput from "./PasswordInput/PasswordInput";
 
-export default function UserInfoPanel({ userInfo, userInfoEditHandler }) {
+export default function UserInfoPanel({
+  userInfo,
+  userInfoEditHandler,
+  showPasswordPanel,
+  passwordPanelHandler,
+}) {
   const [activeInput, setActiveInput] = useState(null);
 
   const clearActiveInput = () => setActiveInput(null);
@@ -17,6 +23,9 @@ export default function UserInfoPanel({ userInfo, userInfoEditHandler }) {
           closeHandler={clearActiveInput}
         />
       ) : null}
+      {showPasswordPanel ? (
+        <PasswordInput closeHandler={passwordPanelHandler} />
+      ) : null}
       <div className="title text-cap text-weight-bold">your profile</div>
       <div className="info-cards-container">
         {Object.keys(userInfo).map((item, index, arr) => {
@@ -30,28 +39,21 @@ export default function UserInfoPanel({ userInfo, userInfoEditHandler }) {
               <div className="card-title text-cap">
                 {item.replace(/_/g, " ")}
               </div>
-              {Array.isArray(userInfo[item]) ? (
-                userInfo[item].map((d) => {
-                  return (
-                    <div key={d} className="card-description multiple text-cap">
-                      {d}
-                    </div>
-                  );
-                })
-              ) : (
-                <div className="card-description text-cap text-weight-bold">
-                  {userInfo[item]}
-                </div>
-              )}
 
-              {item !== "email_address" && (
+              <div className="card-description text-cap text-weight-bold">
+                {userInfo[item]
+                  ? userInfo[item]
+                  : `No ${item.replace(/_/g, " ")}`}
+              </div>
+
+              {item !== "email" && item !== "role" ? (
                 <button
                   className="edit-btn text-cap p-absolute from-top from-right"
                   onClick={() => setActiveInput(item)}
                 >
-                  edit
+                  {userInfo[item] ? "edit" : "add"}
                 </button>
-              )}
+              ) : null}
             </div>
           );
         })}

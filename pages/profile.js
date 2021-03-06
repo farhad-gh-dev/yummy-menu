@@ -2,37 +2,25 @@ import { useState } from "react";
 import Head from "next/head";
 import useTokenCheckInApp from "../hooks/useTokenCheckInApp";
 import useThemeMode from "../hooks/useThemeMode";
+import useLogOut from "../hooks/useLogOut";
+import useUserInfoEdit from "../hooks/useUserInfoEdit";
 
 import Loading from "../components/Loading/Loading";
 import Navbar from "../components/navbar/Navbar";
 import UserInfoPanel from "../components/UserInfoPanel/UserInfoPanel";
 
-export default function User() {
-  const { isLoading } = useTokenCheckInApp();
+export default function Profile() {
+  const { isLoading, userInfo } = useTokenCheckInApp();
   const { themeIsDark, themeModeHandler } = useThemeMode();
-  const [userInfo, setUserInfo] = useState({
-    email_address: "alexmiller@gmail.com",
-    username: "alex miller",
-    phone_number: "+9113412044",
-    address: ["1420  Pine Garden Lane", "3608  Park Avenue"],
-  });
+  const { logoutHandler } = useLogOut();
+  const {
+    userInfoEditHandler,
+    submitNewInfo,
+    passwordResetHandler,
+  } = useUserInfoEdit();
 
-  const userInfoEditHandler = (newInfo) => {
-    if (newInfo.address !== undefined) {
-      setUserInfo({
-        ...userInfo,
-        address: [...userInfo.address, newInfo.address],
-      });
-      return;
-    }
-
-    setUserInfo({
-      ...userInfo,
-      ...newInfo,
-    });
-  };
-
-  const logoutHandler = () => console.log("logged-out");
+  const [showPasswordPanel, setShowPasswordPanel] = useState(false);
+  const passwordPanelHandler = (b) => setShowPasswordPanel(b);
 
   if (isLoading) return <Loading />;
   return (
@@ -52,12 +40,14 @@ export default function User() {
           <UserInfoPanel
             userInfo={userInfo}
             userInfoEditHandler={userInfoEditHandler}
+            showPasswordPanel={showPasswordPanel}
+            passwordPanelHandler={passwordPanelHandler}
           />
         </div>
         <div className="submit-buttons">
           <button
             className="password-reset-btn text-cap text-weight-bold"
-            onClick={() => console.log("password changed")}
+            onClick={() => passwordPanelHandler(true)}
           >
             change password
           </button>

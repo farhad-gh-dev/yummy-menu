@@ -6,6 +6,7 @@ const tokenCheckURL = "http://localhost:8000/auth/user";
 
 const useTokenCheckInApp = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [userInfo, setUserInfo] = useState(null);
 
   const checkToken = async (token) => {
     if (!token) {
@@ -19,6 +20,7 @@ const useTokenCheckInApp = () => {
           Authorization: `Token ${token}`,
         },
       });
+      setUserInfo(data);
       setIsLoading(false);
     } catch {
       localStorage.removeItem("token");
@@ -33,6 +35,7 @@ const useTokenCheckInApp = () => {
 
   return {
     isLoading,
+    userInfo,
   };
 };
 

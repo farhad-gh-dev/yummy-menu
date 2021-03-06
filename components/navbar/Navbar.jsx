@@ -7,11 +7,13 @@ export default function Navbar(props) {
   return (
     <div className="navbar">
       <div className="left-side">
-        <img
-          src="/logo/logo-light.svg"
-          alt="yummy menu"
-          className="company-logo"
-        />
+        <Link href="/">
+          <img
+            src="/logo/logo-light.svg"
+            alt="yummy menu"
+            className="company-logo"
+          />
+        </Link>
       </div>
       <div className="right-side d-flex align-items-center">
         <Link href="/order">
