@@ -10,14 +10,15 @@ import Navbar from "../components/navbar/Navbar";
 import UserInfoPanel from "../components/UserInfoPanel/UserInfoPanel";
 
 export default function Profile() {
-  const { isLoading, userInfo } = useTokenCheckInApp();
+  const { isLoading, userData } = useTokenCheckInApp();
   const { themeIsDark, themeModeHandler } = useThemeMode();
   const { logoutHandler } = useLogOut();
   const {
+    userInfo,
     userInfoEditHandler,
     submitNewInfo,
     passwordResetHandler,
-  } = useUserInfoEdit();
+  } = useUserInfoEdit(userData);
 
   const [showPasswordPanel, setShowPasswordPanel] = useState(false);
   const passwordPanelHandler = (b) => setShowPasswordPanel(b);
@@ -37,12 +38,14 @@ export default function Profile() {
 
       <div className="section-container d-flex flex-column flex-fill">
         <div className="flex-fill">
-          <UserInfoPanel
+          {/* <UserInfoPanel
             userInfo={userInfo}
             userInfoEditHandler={userInfoEditHandler}
             showPasswordPanel={showPasswordPanel}
             passwordPanelHandler={passwordPanelHandler}
-          />
+            submitNewInfo={submitNewInfo}
+            passwordResetHandler={passwordResetHandler}
+          /> */}
         </div>
         <div className="submit-buttons">
           <button

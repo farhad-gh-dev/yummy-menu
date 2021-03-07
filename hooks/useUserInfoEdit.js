@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-const useUserInfoEdit = () => {
-  const [newUserInfo, setNewUserInfo] = useState(null);
+const useUserInfoEdit = (userData) => {
+  const [userInfo, setUserInfo] = useState("test");
 
   const userInfoEditHandler = (newInfo) => {
-    setNewUserInfo({
-      ...newUserInfo,
+    setUserInfo({
+      ...userInfo,
       ...newInfo,
     });
   };
@@ -14,6 +14,7 @@ const useUserInfoEdit = () => {
   const passwordResetHandler = () => console.log("password reset completed...");
 
   return {
+    userInfo,
     userInfoEditHandler,
     submitNewInfo,
     passwordResetHandler,
