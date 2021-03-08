@@ -8,20 +8,20 @@ import useUserInfoEdit from "../hooks/useUserInfoEdit";
 import Loading from "../components/Loading/Loading";
 import Navbar from "../components/navbar/Navbar";
 import UserInfoPanel from "../components/UserInfoPanel/UserInfoPanel";
+import ErrorPanel from "../components/Errors/ErrorPanel";
 
 export default function Profile() {
-  const { isLoading, userData } = useTokenCheckInApp();
+  const { isLoading } = useTokenCheckInApp();
   const { themeIsDark, themeModeHandler } = useThemeMode();
   const { logoutHandler } = useLogOut();
   const {
     userInfo,
+    submitMessage,
     userInfoEditHandler,
     submitNewInfo,
     passwordResetHandler,
-  } = useUserInfoEdit(userData);
-
-  const [showPasswordPanel, setShowPasswordPanel] = useState(false);
-  const passwordPanelHandler = (b) => setShowPasswordPanel(b);
+    deleteUserHandler,
+  } = useUserInfoEdit();
 
   if (isLoading) return <Loading />;
   return (
@@ -36,27 +36,30 @@ export default function Profile() {
         themeModeHandler={themeModeHandler}
       />
 
+      <ErrorPanel text={submitMessage.text} type={submitMessage.type} />
       <div className="section-container d-flex flex-column flex-fill">
         <div className="flex-fill">
-          {/* <UserInfoPanel
-            userInfo={userInfo}
-            userInfoEditHandler={userInfoEditHandler}
-            showPasswordPanel={showPasswordPanel}
-            passwordPanelHandler={passwordPanelHandler}
-            submitNewInfo={submitNewInfo}
-            passwordResetHandler={passwordResetHandler}
-          /> */}
+          {userInfo ? (
+            <UserInfoPanel
+              userInfo={userInfo}
+              userInfoEditHandler={userInfoEditHandler}
+              submitNewInfo={submitNewInfo}
+              passwordResetHandler={passwordResetHandler}
+            />
+          ) : (
+            <Loading />
+          )}
         </div>
         <div className="submit-buttons">
           <button
             className="password-reset-btn text-cap text-weight-bold"
-            onClick={() => passwordPanelHandler(true)}
+            onClick={() => deleteUserHandler()}
           >
-            change password
+            delete account
           </button>
           <button
             className="save-btn text-cap text-weight-bold"
-            onClick={() => console.log("saved changes")}
+            onClick={() => submitNewInfo()}
           >
             save changes
           </button>

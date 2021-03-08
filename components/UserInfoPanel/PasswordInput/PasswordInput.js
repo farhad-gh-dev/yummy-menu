@@ -1,23 +1,20 @@
 import { useState } from "react";
-import {
-  validUsername,
-  validAddress,
-  validPhoneNumber,
-} from "../../../utils/FormValidation";
+import { validPassword } from "../../../utils/FormValidation";
 
 import ErrorPanel from "../../Errors/ErrorPanel";
 
-export default function UserInfoInput({ userInfoEditHandler, closeHandler }) {
-  const [inputValue, setInputValue] = useState({
-    prevPassword: "",
+export default function UserInfoInput({ passwordResetHandler, closeHandler }) {
+  const [inputValues, setInputValues] = useState({
+    password: "",
     newPassword: "",
     newPasswordRepeat: "",
   });
+
   const [inputError, setInputError] = useState("");
 
   const inputHandler = (e) =>
-    setInputValue({
-      ...inputValue,
+    setInputValues({
+      ...inputValues,
       [e.target.name]: e.target.value,
     });
 
@@ -30,36 +27,41 @@ export default function UserInfoInput({ userInfoEditHandler, closeHandler }) {
   };
 
   const submitHandler = () => {
-    if (!inputValue || inputValue === prevValue) {
-      errorHandler(`new ${inputName.replace(/_/g, " ")} is required.`);
+    const { password, newPassword, newPasswordRepeat } = inputValues;
+
+    if (!password || !newPasswordRepeat || !newPasswordRepeat) {
+      errorHandler(`Please complete all required fields.`);
       return;
     }
 
-    if (inputName === "username") {
-      const error = validUsername(inputValue);
-      if (error) {
-        errorHandler(error.message);
-        return;
-      }
+    if (password === newPassword) {
+      errorHandler(
+        `Please enter a different password from your current password`
+      );
+      return;
     }
 
-    if (inputName === "phone_number") {
-      const error = validPhoneNumber(inputValue);
-      if (error) {
-        errorHandler(error.message);
-        return;
-      }
+    if (newPassword !== newPasswordRepeat) {
+      errorHandler(`New Password Repeat is not the same as New Password`);
+      return;
     }
 
-    if (inputName === "address") {
-      const error = validAddress(inputValue);
-      if (error) {
-        errorHandler(error.message);
-        return;
-      }
+    let error = null;
+
+    for (const item of Object.keys(inputValues)) {
+      error = validPassword(inputValues[item]);
+      if (error) break;
     }
 
-    userInfoEditHandler({ [inputName]: inputValue });
+    if (error) {
+      errorHandler(error.message);
+      return;
+    }
+
+    passwordResetHandler({
+      password,
+      newPassword,
+    });
     closeHandler();
   };
 
@@ -70,8 +72,8 @@ export default function UserInfoInput({ userInfoEditHandler, closeHandler }) {
         <input
           className="w-100"
           type="password"
-          name="prevPassword"
-          value={inputValue.prevPassword}
+          name="password"
+          value={inputValues.password}
           placeholder="Enter Your Password"
           onChange={(e) => inputHandler(e)}
         />
@@ -79,7 +81,7 @@ export default function UserInfoInput({ userInfoEditHandler, closeHandler }) {
           className="w-100"
           type="password"
           name="newPassword"
-          value={inputValue.newPassword}
+          value={inputValues.newPassword}
           placeholder="Enter Your New Password"
           onChange={(e) => inputHandler(e)}
         />
@@ -87,7 +89,7 @@ export default function UserInfoInput({ userInfoEditHandler, closeHandler }) {
           className="w-100"
           type="password"
           name="newPasswordRepeat"
-          value={inputValue.newPasswordRepeat}
+          value={inputValues.newPasswordRepeat}
           placeholder="Repeat Your New Password"
           onChange={(e) => inputHandler(e)}
         />
@@ -99,7 +101,7 @@ export default function UserInfoInput({ userInfoEditHandler, closeHandler }) {
           </div>
           <div>
             <button onClick={() => submitHandler()} className="blue-bg">
-              edit
+              save
             </button>
           </div>
         </div>

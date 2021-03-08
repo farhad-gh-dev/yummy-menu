@@ -6,8 +6,7 @@ import PasswordInput from "./PasswordInput/PasswordInput";
 export default function UserInfoPanel({
   userInfo,
   userInfoEditHandler,
-  showPasswordPanel,
-  passwordPanelHandler,
+  passwordResetHandler,
 }) {
   const [activeInput, setActiveInput] = useState(null);
 
@@ -15,7 +14,7 @@ export default function UserInfoPanel({
 
   return (
     <div className="user-info-panel">
-      {activeInput ? (
+      {activeInput && activeInput !== "password" ? (
         <UserInfoInput
           inputName={activeInput}
           prevValue={userInfo[activeInput]}
@@ -23,19 +22,17 @@ export default function UserInfoPanel({
           closeHandler={clearActiveInput}
         />
       ) : null}
-      {showPasswordPanel ? (
-        <PasswordInput closeHandler={passwordPanelHandler} />
+      {activeInput === "password" ? (
+        <PasswordInput
+          closeHandler={clearActiveInput}
+          passwordResetHandler={passwordResetHandler}
+        />
       ) : null}
       <div className="title text-cap text-weight-bold">your profile</div>
       <div className="info-cards-container">
-        {Object.keys(userInfo).map((item, index, arr) => {
+        {Object.keys(userInfo).map((item, arr) => {
           return (
-            <div
-              key={item}
-              className={`info-card p-relative${
-                index === arr.length - 1 ? " last" : ""
-              }`}
-            >
+            <div key={item} className="info-card p-relative">
               <div className="card-title text-cap">
                 {item.replace(/_/g, " ")}
               </div>
@@ -57,6 +54,14 @@ export default function UserInfoPanel({
             </div>
           );
         })}
+        <div className="info-card p-relative last">
+          <div
+            className="card-title text-cap"
+            onClick={() => setActiveInput("password")}
+          >
+            change password
+          </div>
+        </div>
       </div>
     </div>
   );

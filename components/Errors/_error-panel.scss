@@ -10,6 +10,7 @@
   background-color: rgb(124, 124, 124);
   border-radius: 5px;
   transition: 0.3s ease-in-out;
+  z-index: 1000;
 
   &.active {
     transform: translateX(-40px);
