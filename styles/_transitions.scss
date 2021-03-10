@@ -1,0 +1,16 @@
+@mixin clear-transition {
+  transform: translate(0, 0);
+  visibility: visible;
+  opacity: 1;
+}
+
+.t-from-top {
+  transition: 0.5s;
+  transform: translateY(-50px);
+  visibility: hidden;
+  opacity: 0;
+
+  &.clear-transition {
+    @include clear-transition();
+  }
+}

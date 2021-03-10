@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Head from "next/head";
 import useTokenCheckInApp from "../hooks/useTokenCheckInApp";
 import useThemeMode from "../hooks/useThemeMode";
@@ -52,13 +51,13 @@ export default function Profile() {
         </div>
         <div className="submit-buttons">
           <button
-            className="password-reset-btn text-cap text-weight-bold"
+            className="delete-btn text-cap text-weight-bold"
             onClick={() => deleteUserHandler()}
           >
             delete account
           </button>
           <button
-            className="save-btn text-cap text-weight-bold"
+            className="submit-btn text-cap text-weight-bold"
             onClick={() => submitNewInfo()}
           >
             save changes

@@ -1,6 +1,6 @@
 $info_card_border_color: #6baed5;
 $edit_btn_color: #336cbc;
-$password_btn_color: #336cbc;
+$submit_btn_color: #336cbc;
 
 .user-page {
   height: 100vh;
@@ -24,9 +24,14 @@ $password_btn_color: #336cbc;
         margin-bottom: 0;
       }
 
-      .password-reset-btn {
-        border-color: $password_btn_color;
-        color: $password_btn_color;
+      .submit-btn {
+        border-color: $submit_btn_color;
+        color: $submit_btn_color;
+      }
+
+      .delete-btn {
+        border-color: $secondary_color;
+        color: $secondary_color;
       }
     }
   }

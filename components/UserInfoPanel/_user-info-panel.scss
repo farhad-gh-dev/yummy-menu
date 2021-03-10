@@ -15,7 +15,7 @@ $red_btn_bg_color: #fa2600;
       &::after {
         content: "";
         position: absolute;
-        top: -7px;
+        top: 0px;
         left: -4px;
         width: 7px;
         height: 7px;
@@ -35,6 +35,8 @@ $red_btn_bg_color: #fa2600;
         font-size: 16px;
         margin-bottom: 10px;
         margin-left: 8px;
+        font-weight: bold;
+        text-transform: capitalize;
 
         &.address {
           padding: 2px 6px 1px;
@@ -42,10 +44,23 @@ $red_btn_bg_color: #fa2600;
         }
       }
 
+      .no-card-description {
+        font-size: 16px;
+        margin-bottom: 10px;
+        margin-left: 8px;
+        text-transform: capitalize;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
       .edit-btn {
         font-size: 14px;
         padding: 0;
         color: $edit_btn_color;
+      }
+
+      .password-reset-btn {
+        font-size: 16px;
+        color: $blue_btn_bg_color;
       }
     }
   }
