@@ -3,8 +3,8 @@ import axios from "axios";
 import Router from "next/router";
 import { signInValidation, singUpValidation } from "../utils/FormValidation";
 
-const signInURL = "http://localhost:8000/auth/login";
-const signUpURL = "http://localhost:8000/auth/register";
+const signInURL = "http://192.168.1.6:8000/auth/login";
+const signUpURL = "http://192.168.1.6:8000/auth/register";
 
 const useAuth = (initialValues = null) => {
   const [formData, setFromData] = useState(initialValues);

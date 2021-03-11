@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Router from "next/router";
 
-const passwordResetURI = "http://localhost:8000/auth/password-reset";
-const userInfoEditURI = "http://localhost:8000/auth/user";
-const deleteUserURI = "http://localhost:8000/auth/user";
+const tokenCheckURL = "http://192.168.1.6:8000/auth/user";
+const passwordResetURI = "http://192.168.1.6:8000/auth/password-reset";
+const userInfoEditURI = "http://192.168.1.6:8000/auth/user";
+const deleteUserURI = "http://192.168.1.6:8000/auth/user";
 
 const useUserInfoEdit = () => {
   const [prevUserInfo, setPrevUserInfo] = useState(null);
@@ -101,7 +102,6 @@ const useUserInfoEdit = () => {
   useEffect(() => {
     const getUserInfo = async () => {
       const token = localStorage.getItem("token");
-      const tokenCheckURL = "http://localhost:8000/auth/user";
 
       try {
         const { data } = await axios.get(tokenCheckURL, {
