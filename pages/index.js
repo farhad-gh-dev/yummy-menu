@@ -65,7 +65,9 @@ export default function Home({ fetchedData }) {
 }
 
 export async function getServerSideProps() {
-  const { data } = await axios.get(`http://localhost:8000/yummy-menu/main`);
+  const { data } = await axios.get(
+    `http://localhost:8000/yummy-menu/menu/main`
+  );
 
   if (!data) {
     return {
