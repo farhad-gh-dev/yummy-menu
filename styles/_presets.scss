@@ -147,6 +147,12 @@ button {
   &.from-right {
     right: 0 !important;
   }
+
+  &.to-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .text-color-light {

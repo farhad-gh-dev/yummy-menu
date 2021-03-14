@@ -11,11 +11,7 @@ export default function Order() {
   const { themeIsDark, themeModeHandler } = useThemeMode();
   const { logoutHandler } = useLogOut();
 
-  const fakeData = [
-    "paper-cup.png",
-    "crispy-chicken.png",
-    "brooklyn-style.png",
-  ];
+  const fakeData = ["burger.png", "brooklyn-style.png", "paper-cup.png"];
 
   if (isLoading) return <Loading />;
   return (

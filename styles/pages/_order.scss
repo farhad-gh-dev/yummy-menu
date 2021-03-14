@@ -10,11 +10,12 @@
     .order-items-panel {
       .title {
         font-size: 20px;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
       }
 
       .card-container {
         padding-top: 20px;
+        margin-bottom: 18px;
 
         .bg-shape {
           @include drop-shadow(8px, 3px, 10px, rgba(0, 0, 0, 0.1));
@@ -23,10 +24,10 @@
         .card-content {
           .item-image {
             margin-left: 15px;
-            width: 75px;
+            width: 85px;
 
             img {
-              max-width: 75px;
+              max-width: 85px;
               max-height: 75px;
             }
           }
