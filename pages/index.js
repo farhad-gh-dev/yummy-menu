@@ -15,6 +15,7 @@ export default function Home({ fetchedData }) {
   const { menuData, activeType, activeTypeHandler } = useMenuData(fetchedData);
   const {
     orderData,
+    ordersNumber,
     toggleItemInOrder,
     increaseItemQuantity,
     decreaseItemQuantity,
@@ -31,7 +32,7 @@ export default function Home({ fetchedData }) {
         </Head>
 
         <Navbar
-          ordersNumber={orderData.items.length}
+          ordersNumber={ordersNumber}
           logoutHandler={logoutHandler}
           themeIsDark={themeIsDark}
           themeModeHandler={themeModeHandler}
@@ -42,7 +43,7 @@ export default function Home({ fetchedData }) {
             {menuData !== null ? (
               <CardsMenu
                 menuData={menuData[`${activeType}`]}
-                orderedItems={orderData.items}
+                orderData={orderData}
                 toggleItemInOrder={toggleItemInOrder}
                 increaseItemQuantity={increaseItemQuantity}
                 decreaseItemQuantity={decreaseItemQuantity}

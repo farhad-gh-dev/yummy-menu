@@ -1,35 +1,74 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useOrderData = () => {
-  const [orderData, setOrderData] = useState({
-    restaurantName: "main",
-    items: [],
-  });
+  const [orderData, setOrderData] = useState(null);
 
-  const toggleItemInOrder = (itemId) => {
-    const ItemIsInOrder = orderData.items.some((item) => item._id === itemId);
+  const updateSessionStorage = (userOrder) => {
+    sessionStorage.setItem("order", JSON.stringify(userOrder));
+  };
+  const clearSessionStorage = () => {
+    sessionStorage.removeItem("order");
+  };
+
+  const toggleItemInOrder = (itemData) => {
+    if (!orderData) {
+      const firstOrder = {
+        restaurantName: "main",
+        items: [
+          {
+            _id: itemData._id,
+            title: itemData.title,
+            image: itemData.image,
+            price: itemData.price,
+            quantity: 1,
+            discount: 10,
+          },
+        ],
+      };
+      updateSessionStorage(firstOrder);
+      setOrderData(firstOrder);
+
+      return;
+    }
+
+    const ItemIsInOrder = orderData.items.some(
+      (item) => item._id === itemData._id
+    );
 
     if (!ItemIsInOrder) {
-      setOrderData({
+      const updatedOrder = {
         ...orderData,
         items: [
           ...orderData.items,
           {
-            _id: itemId,
+            _id: itemData._id,
+            title: itemData.title,
+            image: itemData.image,
+            price: itemData.price,
             quantity: 1,
+            discount: 10,
           },
         ],
-      });
+      };
+      updateSessionStorage(updatedOrder);
+      setOrderData(updatedOrder);
     } else {
-      setOrderData({
+      if (orderData.items.length === 1) {
+        clearSessionStorage();
+        setOrderData(null);
+        return;
+      }
+      const filteredOrder = {
         ...orderData,
-        items: orderData.items.filter((item) => item._id !== itemId),
-      });
+        items: orderData.items.filter((item) => item._id !== itemData._id),
+      };
+      updateSessionStorage(filteredOrder);
+      setOrderData(filteredOrder);
     }
   };
 
   const increaseItemQuantity = (itemId) => {
-    setOrderData({
+    const updatedOrder = {
       ...orderData,
       items: orderData.items.map((item) => {
         if (item._id === itemId) {
@@ -37,11 +76,13 @@ const useOrderData = () => {
         }
         return item;
       }),
-    });
+    };
+    updateSessionStorage(updatedOrder);
+    setOrderData(updatedOrder);
   };
 
   const decreaseItemQuantity = (itemId) => {
-    setOrderData({
+    const updatedOrder = {
       ...orderData,
       items: orderData.items.map((item) => {
         if (item._id === itemId && item.quantity > 1) {
@@ -49,11 +90,19 @@ const useOrderData = () => {
         }
         return item;
       }),
-    });
+    };
+    updateSessionStorage(updatedOrder);
+    setOrderData(updatedOrder);
   };
+
+  useEffect(() => {
+    const orderInSession = sessionStorage.getItem("order");
+    if (orderInSession) setOrderData(JSON.parse(orderInSession));
+  }, []);
 
   return {
     orderData,
+    ordersNumber: orderData ? orderData.items.length : null,
     toggleItemInOrder,
     increaseItemQuantity,
     decreaseItemQuantity,

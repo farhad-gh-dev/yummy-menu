@@ -6,7 +6,7 @@ import ItemCard from "./ItemCard/ItemCard";
 export default function CardsMenu(props) {
   const {
     menuData,
-    orderedItems,
+    orderData,
     toggleItemInOrder,
     increaseItemQuantity,
     decreaseItemQuantity,
@@ -43,9 +43,11 @@ export default function CardsMenu(props) {
         <div className="cards-container">
           <div className="flex-fill d-inline-block">
             {menuData[activeCategory].map((item) => {
-              const itemOrderInfo = orderedItems.find(
-                (orderedItem) => orderedItem._id === item._id
-              );
+              const itemOrderInfo = orderData
+                ? orderData.items.find(
+                    (orderedItem) => orderedItem._id === item._id
+                  )
+                : null;
               return (
                 <ItemCard
                   key={uuid}

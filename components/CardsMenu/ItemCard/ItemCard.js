@@ -26,7 +26,7 @@ export default function ItemCard(props) {
         </div>
         <button
           className="add-button text-cap"
-          onClick={() => toggleItemInOrder(itemData._id)}
+          onClick={() => toggleItemInOrder(itemData)}
         >
           {itemOrderInfo ? "remove item" : "add item"}
         </button>
