@@ -44,20 +44,19 @@ export default function Order() {
               decreaseItemQuantity={decreaseItemQuantity}
             />
           </div>
-          <OrderSubmit submitHandler={() => console.log("submit order")} />
+          <OrderSubmit
+            submitHandler={() => console.log("submit order")}
+            orderData={orderData}
+          />
         </div>
       ) : (
         <div className="section-container d-flex flex-column flex-fill p-relative">
           <div className="empty-order cover-parent d-flex flex-column justify-content-center align-items-center">
             <div className="message-title text-cap text-weight-bold">
-              <span>n</span>
-              <span>o</span>
-              <div className="d-inline-block"> </div>
-              <span>o</span>
-              <span>r</span>
-              <span>d</span>
-              <span>e</span>
-              <span>r</span>
+              {"no order".split("").map((l) => {
+                if (l === " ") return <span className="space"></span>;
+                return <span>{l}</span>;
+              })}
             </div>
             <div className="redirect-link text-cap">
               <Link href="/">
