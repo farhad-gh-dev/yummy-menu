@@ -6,6 +6,7 @@ import useOrderData from "../hooks/useOrderData";
 import Link from "next/link";
 
 import Loading from "../components/Loading/Loading";
+import ErrorPanel from "../components/Errors/ErrorPanel";
 import Navbar from "../components/navbar/Navbar";
 import OrderedItemsPanel from "../components/OrderPanel/OrderedItems";
 import OrderSubmit from "../components/OrderPanel/OrderSubmit";
@@ -16,9 +17,11 @@ export default function Order() {
   const { logoutHandler } = useLogOut();
   const {
     orderData,
+    submitMessage,
     toggleItemInOrder,
     increaseItemQuantity,
     decreaseItemQuantity,
+    submitOrder,
   } = useOrderData();
 
   if (isLoading) return <Loading />;
@@ -28,6 +31,8 @@ export default function Order() {
         <title>Yummy Menu</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <ErrorPanel text={submitMessage.text} type={submitMessage.type} />
+
       <Navbar
         logoutHandler={logoutHandler}
         themeIsDark={themeIsDark}
@@ -35,8 +40,8 @@ export default function Order() {
       />
 
       {orderData ? (
-        <div className="section-container d-flex flex-column flex-fill p-relative">
-          <div className="flex-fill p-relative">
+        <div className="section-container d-flex flex-column flex-fill">
+          <div className="flex-fill" style={{ overflowY: "auto" }}>
             <OrderedItemsPanel
               orderData={orderData}
               toggleItemInOrder={toggleItemInOrder}
@@ -44,10 +49,7 @@ export default function Order() {
               decreaseItemQuantity={decreaseItemQuantity}
             />
           </div>
-          <OrderSubmit
-            submitHandler={() => console.log("submit order")}
-            orderData={orderData}
-          />
+          <OrderSubmit submitHandler={submitOrder} orderData={orderData} />
         </div>
       ) : (
         <div className="section-container d-flex flex-column flex-fill p-relative">

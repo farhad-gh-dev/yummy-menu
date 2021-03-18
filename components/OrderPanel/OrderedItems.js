@@ -5,7 +5,7 @@ export default function OrderedItems({
   decreaseItemQuantity,
 }) {
   return (
-    <div className="order-items-panel p-relative">
+    <div className="ordered-items">
       <div className="title text-cap text-weight-bold">your order</div>
       {orderData.items.map((item) => {
         return (

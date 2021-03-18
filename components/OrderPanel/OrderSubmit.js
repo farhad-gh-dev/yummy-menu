@@ -17,7 +17,7 @@ export default function OrderSubmit({ submitHandler, orderData = null }) {
   }, [orderData]);
 
   return (
-    <div className="order-submit-panel">
+    <div className="order-submit">
       <div className="cost-items-container">
         <div className="cost-item d-flex justify-space-between">
           <div className="item-title">delivery fee</div>

@@ -5,8 +5,7 @@
   .background-shape {
     height: auto;
     width: 290px;
-    -webkit-filter: drop-shadow(5px 0px 15px rgba(0, 0, 0, 0.1));
-    filter: drop-shadow(5px 0px 25px rgba(0, 0, 0, 0.1));
+    @include drop-shadow(5px, 0px, 15px, rgba(0, 0, 0, 0.1));
   }
 
   .card-content {
@@ -16,8 +15,7 @@
         max-width: 55%;
         height: 140px;
         transform: translateX(20%);
-        -webkit-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
-        filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+        @include drop-shadow(5px, 5px, 10px, rgba(0, 0, 0, 0.2));
       }
     }
     .item-text {
@@ -75,8 +73,7 @@
 
       img {
         width: 35px;
-        -webkit-filter: drop-shadow(2px 5px 8px rgba(0, 0, 0, 0.3));
-        filter: drop-shadow(2px 5px 8px rgba(0, 0, 0, 0.3));
+        @include drop-shadow(2px, 5px, 8px, rgba(0, 0, 0, 0.3));
       }
     }
   }

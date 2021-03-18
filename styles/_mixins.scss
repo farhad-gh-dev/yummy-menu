@@ -8,3 +8,14 @@
   -webkit-filter: drop-shadow($x $y $blur $color);
   filter: drop-shadow($x $y $blur $color);
 }
+
+@mixin mobile-scroll() {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
