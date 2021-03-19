@@ -41,7 +41,7 @@ export default function Order() {
 
       {orderData ? (
         <div className="section-container d-flex flex-column flex-fill">
-          <div className="flex-fill" style={{ overflowY: "auto" }}>
+          <div className="ordered-items-container flex-fill">
             <OrderedItemsPanel
               orderData={orderData}
               toggleItemInOrder={toggleItemInOrder}

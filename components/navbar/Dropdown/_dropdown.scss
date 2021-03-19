@@ -65,9 +65,16 @@ $dropdown_gradient_color_2: #bed0ee;
     right: 0;
     background-color: transparent;
     margin-top: 13px;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1000;
+    transition: 0.5s ease-in-out;
 
     &.show {
       display: block;
+      visibility: visible;
+      opacity: 1;
+      z-index: auto;
 
       .dropdown-item {
         visibility: visible;

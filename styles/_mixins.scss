@@ -9,7 +9,7 @@
   filter: drop-shadow($x $y $blur $color);
 }
 
-@mixin mobile-scroll() {
+@mixin hidden-scrollbar() {
   -ms-overflow-style: -ms-autohiding-scrollbar;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none; /* IE and Edge */

@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
+
+const restaurantMenuURI = `http://localhost:8000/yummy-menu/menu/main`;
 
 const useMenuData = (fetchedData) => {
   const [menuData, setMenuData] = useState(null);
@@ -33,22 +36,20 @@ const useMenuData = (fetchedData) => {
     //FORMAT ITEMS IN EACH TYPE BY THEIR CATEGORY
     Object.keys(formattedMenu).map((type) => {
       //GET TOP 3 POPULAR ITEMS FOR EACH FOOD TYPE
-      let popularItems = formattedMenu[type]
-        .sort((a, b) =>
-          a.orderedTimes > b.orderedTimes
-            ? -1
-            : b.orderedTimes > a.orderedTimes
-            ? 1
-            : 0
-        )
+      const itemsByType = [...formattedMenu[type], { orderedTimes: 0 }];
+      const popularItems = itemsByType
+        .sort((a, b) => b.orderedTimes - a.orderedTimes)
         .slice(0, 3);
+
+      console.log(formattedMenu[type]);
+      console.log(popularItems);
 
       let itemCategories = ["popular"];
       formattedMenu[type].map((item) => {
         if (!itemCategories.includes(item.category)) {
           itemCategories.push(item.category);
         }
-        return null;
+        return;
       });
 
       let itemsInCategories = {};

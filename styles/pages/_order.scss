@@ -5,9 +5,14 @@
   overflow-y: auto;
 
   .section-container {
-    padding: 25px 35px 35px;
+    padding: 25px 25px 35px;
     max-width: 400px;
     overflow-y: auto;
+
+    .ordered-items-container {
+      overflow-y: auto;
+      @include hidden-scrollbar;
+    }
 
     .empty-order {
       .message-title {
