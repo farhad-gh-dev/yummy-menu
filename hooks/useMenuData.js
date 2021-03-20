@@ -1,11 +1,25 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 
 const restaurantMenuURI = `http://localhost:8000/yummy-menu/menu/main`;
 
 const useMenuData = (fetchedData) => {
   const [menuData, setMenuData] = useState(null);
   const [activeType, setActiveType] = useState(null);
+  const [menuDataError, setMenuDataError] = useState({
+    text: "",
+    type: "",
+  });
+
+  const errorHandler = (text, type) => {
+    setMenuDataError({
+      text,
+      type,
+    });
+
+    setTimeout(() => {
+      setMenuDataError({ text: "", type: "" });
+    }, 3000);
+  };
 
   const activeTypeHandler = (typeTitle) => {
     if (activeType !== typeTitle) setActiveType(typeTitle);
@@ -37,6 +51,7 @@ const useMenuData = (fetchedData) => {
     Object.keys(formattedMenu).map((type) => {
       //GET TOP 3 POPULAR ITEMS FOR EACH FOOD TYPE
       const itemsByType = [...formattedMenu[type], { orderedTimes: 0 }];
+      //last value in itemsByType is a dummy data to prevent sort function to over right the original variables *a bug
       const popularItems = itemsByType
         .sort((a, b) => b.orderedTimes - a.orderedTimes)
         .slice(0, 3);
@@ -45,6 +60,7 @@ const useMenuData = (fetchedData) => {
       console.log(popularItems);
 
       let itemCategories = ["popular"];
+      //GET ALL CATEGORIES FOR THIS TYPE
       formattedMenu[type].map((item) => {
         if (!itemCategories.includes(item.category)) {
           itemCategories.push(item.category);
@@ -53,6 +69,7 @@ const useMenuData = (fetchedData) => {
       });
 
       let itemsInCategories = {};
+      //PUSH EACH ITEM TO RELATED TYPE ARRAY
       itemCategories.map((categoryTitle) => {
         if (categoryTitle === "popular") {
           itemsInCategories = {
@@ -76,13 +93,26 @@ const useMenuData = (fetchedData) => {
   };
 
   useEffect(() => {
-    const formattedData = dataFormatHandler(fetchedData);
+    const test = {};
+    if (
+      !fetchedData ||
+      (fetchedData.constructor === Object &&
+        Object.keys(fetchedData).length === 0)
+    ) {
+      errorHandler("something went wrong", "fail");
+      return;
+    }
 
-    setActiveType(Object.keys(formattedData)[0]);
-    setMenuData(formattedData);
+    try {
+      const formattedData = dataFormatHandler(fetchedData);
+      setActiveType(Object.keys(formattedData)[0]);
+      setMenuData(formattedData);
+    } catch {
+      errorHandler("something went wrong", "fail");
+    }
   }, []);
 
-  return { menuData, activeType, activeTypeHandler };
+  return { menuData, activeType, menuDataError, activeTypeHandler };
 };
 
 export default useMenuData;

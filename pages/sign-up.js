@@ -6,7 +6,7 @@ import useTokenCheckInAuth from "../hooks/useTokenCheckInAuth";
 
 import AuthFormPanel from "../components/AuthFormPanel/AuthFormPanel";
 import Loading from "../components/Loading/Loading";
-import ErrorPanel from "../components/Errors/ErrorPanel";
+import Alert from "../components/Alerts/Alert";
 
 export default function signUp() {
   const { isLoading } = useTokenCheckInAuth();
@@ -32,7 +32,7 @@ export default function signUp() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <ErrorPanel text={ErrorMessage} type="fail" />
+        <Alert text={ErrorMessage} type="fail" />
         <AuthFormPanel
           type="sign up"
           redirectLink={{

@@ -3,6 +3,7 @@ import { v4 as uuid } from "uuid";
 
 import ItemCard from "./ItemCard/ItemCard";
 
+//better solution for active category update (?)
 export default function CardsMenu(props) {
   const {
     menuData,
@@ -14,12 +15,16 @@ export default function CardsMenu(props) {
 
   const [activeCategory, setActiveCategory] = useState("popular");
 
-  const activeCategoryHandler = (categoryTitle) => {
-    setActiveCategory(categoryTitle);
+  const newActiveCategory = (category) => {
+    //to reRender cards and start from the start of each scroll section
+    setActiveCategory(null);
+    setTimeout(() => {
+      setActiveCategory(category);
+    }, 1);
   };
 
   useEffect(() => {
-    setActiveCategory("popular");
+    newActiveCategory("popular");
   }, [menuData]);
 
   if (menuData && Object.keys(menuData).includes(activeCategory))
@@ -33,7 +38,7 @@ export default function CardsMenu(props) {
                 className={`category${
                   activeCategory === categoryTitle ? " active" : ""
                 }`}
-                onClick={() => activeCategoryHandler(categoryTitle)}
+                onClick={() => newActiveCategory(categoryTitle)}
               >
                 {categoryTitle}
               </div>
@@ -41,7 +46,10 @@ export default function CardsMenu(props) {
           })}
         </div>
         <div className="cards-container">
-          <div className="flex-fill d-inline-block">
+          <div
+            className="flex-fill d-inline-block"
+            // style={{ transform: "translateX(-320px)" }}
+          >
             {menuData[activeCategory].map((item) => {
               const itemOrderInfo = orderData
                 ? orderData.items.find(

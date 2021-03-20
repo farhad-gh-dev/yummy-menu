@@ -6,7 +6,7 @@ import useOrderData from "../hooks/useOrderData";
 import Link from "next/link";
 
 import Loading from "../components/Loading/Loading";
-import ErrorPanel from "../components/Errors/ErrorPanel";
+import Alert from "../components/Alerts/Alert";
 import Navbar from "../components/navbar/Navbar";
 import OrderedItemsPanel from "../components/OrderPanel/OrderedItems";
 import OrderSubmit from "../components/OrderPanel/OrderSubmit";
@@ -31,7 +31,7 @@ export default function Order() {
         <title>Yummy Menu</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ErrorPanel text={submitMessage.text} type={submitMessage.type} />
+      <Alert text={submitMessage.text} type={submitMessage.type} />
 
       <Navbar
         logoutHandler={logoutHandler}

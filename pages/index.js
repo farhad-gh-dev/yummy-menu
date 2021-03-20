@@ -5,6 +5,8 @@ import useTokenCheckInApp from "../hooks/useTokenCheckInApp";
 import useMenuData from "../hooks/useMenuData";
 import useOrderData from "../hooks/useOrderData";
 
+import Alert from "../components/Alerts/Alert";
+import Loading from "../components/Loading/Loading";
 import Navbar from "../components/navbar/Navbar";
 import TypeMenu from "../components/TypeMenu/TypeMenu";
 import CardsMenu from "../components/CardsMenu/CardsMenu";
@@ -12,7 +14,12 @@ import CardsMenu from "../components/CardsMenu/CardsMenu";
 export default function Home({ fetchedData }) {
   const { themeIsDark, themeModeHandler } = useThemeMode();
   const { isLoading } = useTokenCheckInApp();
-  const { menuData, activeType, activeTypeHandler } = useMenuData(fetchedData);
+  const {
+    menuData,
+    activeType,
+    menuDataError,
+    activeTypeHandler,
+  } = useMenuData(fetchedData);
   const {
     orderData,
     ordersNumber,
@@ -23,46 +30,46 @@ export default function Home({ fetchedData }) {
 
   const logoutHandler = () => console.log("logged-out");
 
-  if (!isLoading)
-    return (
-      <div className="menu-page d-flex flex-column">
-        <Head>
-          <title>Yummy Menu</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
+  if (isLoading) return <Loading />;
+  return (
+    <div className="menu-page d-flex flex-column">
+      <Head>
+        <title>Yummy Menu</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-        <Navbar
-          ordersNumber={ordersNumber}
-          logoutHandler={logoutHandler}
-          themeIsDark={themeIsDark}
-          themeModeHandler={themeModeHandler}
-        />
+      <Alert text={menuDataError.text} type={menuDataError.type} />
 
-        <div className="menu-container d-flex flex-column flex-fill">
-          <div className="flex-fill">
-            {menuData !== null ? (
-              <CardsMenu
-                menuData={menuData[`${activeType}`]}
-                orderData={orderData}
-                toggleItemInOrder={toggleItemInOrder}
-                increaseItemQuantity={increaseItemQuantity}
-                decreaseItemQuantity={decreaseItemQuantity}
-              />
-            ) : (
-              <div>loading...</div>
-            )}
-          </div>
-          <div>
-            <TypeMenu
-              activeType={activeType}
-              activeTypeHandler={activeTypeHandler}
+      <Navbar
+        ordersNumber={ordersNumber}
+        logoutHandler={logoutHandler}
+        themeIsDark={themeIsDark}
+        themeModeHandler={themeModeHandler}
+      />
+
+      <div className="menu-container d-flex flex-column flex-fill">
+        <div className="flex-fill">
+          {menuData !== null ? (
+            <CardsMenu
+              menuData={menuData[`${activeType}`]}
+              orderData={orderData}
+              toggleItemInOrder={toggleItemInOrder}
+              increaseItemQuantity={increaseItemQuantity}
+              decreaseItemQuantity={decreaseItemQuantity}
             />
-          </div>
+          ) : (
+            <div>loading...</div>
+          )}
+        </div>
+        <div>
+          <TypeMenu
+            activeType={activeType}
+            activeTypeHandler={activeTypeHandler}
+          />
         </div>
       </div>
-    );
-
-  return <div>loading...</div>;
+    </div>
+  );
 }
 
 export async function getServerSideProps() {

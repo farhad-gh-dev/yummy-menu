@@ -8,7 +8,7 @@ import useUserInfoEdit from "../hooks/useUserInfoEdit";
 import Loading from "../components/Loading/Loading";
 import Navbar from "../components/navbar/Navbar";
 import UserInfoPanel from "../components/UserInfoPanel/UserInfoPanel";
-import ErrorPanel from "../components/Errors/ErrorPanel";
+import Alert from "../components/Alerts/Alert";
 
 export default function Profile() {
   const { isLoading } = useTokenCheckInApp();
@@ -38,7 +38,7 @@ export default function Profile() {
         themeModeHandler={themeModeHandler}
       />
 
-      <ErrorPanel text={submitMessage.text} type={submitMessage.type} />
+      <Alert text={submitMessage.text} type={submitMessage.type} />
       <div className="section-container d-flex flex-column flex-fill">
         <div className="flex-fill">
           {userInfo ? (

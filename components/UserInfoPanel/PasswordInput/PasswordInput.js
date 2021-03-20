@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { validPassword } from "../../../utils/FormValidation";
 
-import ErrorPanel from "../../Errors/ErrorPanel";
+import Alert from "../../Alerts/Alert";
 
 export default function UserInfoInput({ passwordResetHandler, closeHandler }) {
   const [inputValues, setInputValues] = useState({
@@ -67,7 +67,7 @@ export default function UserInfoInput({ passwordResetHandler, closeHandler }) {
 
   return (
     <div className="user-info-input d-flex align-items-center justify-content-center">
-      <ErrorPanel text={inputError} type="warning" />
+      <Alert text={inputError} type="warning" />
       <div className="input-panel w-100">
         <input
           className="w-100"
