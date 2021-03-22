@@ -12,7 +12,7 @@ export default function signUp() {
   const { isLoading } = useTokenCheckInAuth();
   const {
     formData,
-    ErrorMessage,
+    authError,
     formHandler,
     guestUser,
     signUpHandler,
@@ -32,7 +32,7 @@ export default function signUp() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <Alert text={ErrorMessage} type="fail" />
+        <Alert text={authError.text} type={authError.type} />
         <AuthFormPanel
           type="sign up"
           redirectLink={{
@@ -43,7 +43,6 @@ export default function signUp() {
           guestUser={guestUser}
           formData={formData}
           submitHandler={signUpHandler}
-          ErrorMessage={ErrorMessage}
         >
           <div className="input-container">
             <input

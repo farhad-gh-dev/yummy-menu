@@ -2,17 +2,16 @@ import { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 
 import ItemCard from "./ItemCard/ItemCard";
+import Loading from "../Loading/Loading";
 
 //better solution for active category update (?)
-export default function CardsMenu(props) {
-  const {
-    menuData,
-    orderData,
-    toggleItemInOrder,
-    increaseItemQuantity,
-    decreaseItemQuantity,
-  } = props;
-
+export default function CardsMenu({
+  menuData,
+  orderData,
+  toggleItemInOrder = () => {},
+  increaseItemQuantity = () => {},
+  decreaseItemQuantity = () => {},
+}) {
   const [activeCategory, setActiveCategory] = useState("popular");
 
   const newActiveCategory = (category) => {
@@ -72,5 +71,5 @@ export default function CardsMenu(props) {
       </div>
     );
 
-  return <div className="loading">loading...</div>;
+  return <Loading />;
 }

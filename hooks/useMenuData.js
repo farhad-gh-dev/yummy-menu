@@ -1,28 +1,13 @@
 import { useState, useEffect } from "react";
-
-const restaurantMenuURI = `http://localhost:8000/yummy-menu/menu/main`;
+import useError from "./useError";
 
 const useMenuData = (fetchedData) => {
   const [menuData, setMenuData] = useState(null);
   const [activeType, setActiveType] = useState(null);
-  const [menuDataError, setMenuDataError] = useState({
-    text: "",
-    type: "",
-  });
-
-  const errorHandler = (text, type) => {
-    setMenuDataError({
-      text,
-      type,
-    });
-
-    setTimeout(() => {
-      setMenuDataError({ text: "", type: "" });
-    }, 3000);
-  };
+  const { errorObj, errorHandler } = useError();
 
   const activeTypeHandler = (typeTitle) => {
-    if (activeType !== typeTitle) setActiveType(typeTitle);
+    setActiveType(typeTitle);
   };
 
   const dataFormatHandler = (dataToFormat) => {
@@ -93,12 +78,7 @@ const useMenuData = (fetchedData) => {
   };
 
   useEffect(() => {
-    const test = {};
-    if (
-      !fetchedData ||
-      (fetchedData.constructor === Object &&
-        Object.keys(fetchedData).length === 0)
-    ) {
+    if (!fetchedData) {
       errorHandler("something went wrong", "fail");
       return;
     }
@@ -112,7 +92,7 @@ const useMenuData = (fetchedData) => {
     }
   }, []);
 
-  return { menuData, activeType, menuDataError, activeTypeHandler };
+  return { menuData, activeType, menuDataError: errorObj, activeTypeHandler };
 };
 
 export default useMenuData;

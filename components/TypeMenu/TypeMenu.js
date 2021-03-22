@@ -1,7 +1,8 @@
-export default function TypeMenu(props) {
-  const { activeType, activeTypeHandler } = props;
-
-  const testData = [
+export default function TypeMenu({
+  activeType = "burger",
+  activeTypeHandler = () => {},
+}) {
+  const types = [
     { title: "burger", icon: "/design-utils/burger.png" },
     { title: "pizza", icon: "/design-utils/pizza.png" },
     { title: "drink", icon: "/design-utils/drink.png" },
@@ -9,7 +10,7 @@ export default function TypeMenu(props) {
 
   return (
     <div className="type-menu d-grid">
-      {testData.map((item) => {
+      {types.map((item) => {
         return (
           <div
             key={item.title}

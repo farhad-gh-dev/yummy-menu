@@ -12,7 +12,7 @@ export default function signIn() {
   const { isLoading } = useTokenCheckInAuth();
   const {
     formData,
-    ErrorMessage,
+    authError,
     formHandler,
     guestUser,
     signInHandler,
@@ -31,7 +31,7 @@ export default function signIn() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <Alert text={ErrorMessage} type="fail" />
+        <Alert text={authError.text} type={authError.type} />
         <AuthFormPanel
           type="sign in"
           redirectLink={{
@@ -42,7 +42,6 @@ export default function signIn() {
           guestUser={guestUser}
           formData={formData}
           submitHandler={signInHandler}
-          ErrorMessage={ErrorMessage}
         >
           <div className="input-container">
             <input

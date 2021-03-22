@@ -51,22 +51,25 @@ const singUpValidation = (formData) => {
     //check if input is empty
     if (!formData[inputName]) {
       error = { message: `${inputName} is required.` };
-      break;
+      if (error) break;
     }
 
     //Validation for: valid characters for username / min and max number of characters
     if (inputName === "username") {
       error = validUsername(formData["username"]);
+      if (error) break;
     }
 
     //Validation for: valid characters for email / min and max number of characters
     if (inputName === "email") {
       error = validEmail(formData["email"]);
+      if (error) break;
     }
 
     //Validation for: password strength / min number of characters
     if (inputName === "password") {
       error = validPassword(formData["password"]);
+      if (error) break;
     }
   }
 
@@ -91,6 +94,19 @@ const signInValidation = (formData) => {
       break;
     }
 
+    //Validation for: min and max number of characters
+    if (inputName === "usernameOrEmail") {
+      if (formData["usernameOrEmail"].length < 3) {
+        error = { message: "username or email address is too short" };
+        break;
+      }
+
+      if (formData["usernameOrEmail"].length > 254) {
+        error = { message: "username or email is too long" };
+        break;
+      }
+    }
+
     //Validation for: password strength / min number of characters
     if (inputName === "password") {
       if (formData["password"].length < 8) {
@@ -102,19 +118,6 @@ const signInValidation = (formData) => {
         error = {
           message: "invalid username or password",
         };
-        break;
-      }
-    }
-
-    //Validation for: min and max number of characters
-    if (inputName === "usernameOrEmail") {
-      if (formData["usernameOrEmail"].length < 3) {
-        error = { message: "username or email address is too short" };
-        break;
-      }
-
-      if (formData["usernameOrEmail"].length > 254) {
-        error = { message: "username or email is too long" };
         break;
       }
     }

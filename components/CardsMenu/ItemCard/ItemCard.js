@@ -1,12 +1,11 @@
-export default function ItemCard(props) {
-  const {
-    itemData,
-    itemOrderInfo,
-    toggleItemInOrder,
-    increaseItemQuantity,
-    decreaseItemQuantity,
-  } = props;
-
+export default function ItemCard({
+  itemData,
+  itemOrderInfo,
+  toggleItemInOrder = () => {},
+  increaseItemQuantity = () => {},
+  decreaseItemQuantity = () => {},
+}) {
+  if (!itemData) return null;
   return (
     <div className="item-card p-relative">
       <img

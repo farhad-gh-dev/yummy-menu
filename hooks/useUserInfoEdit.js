@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Router from "next/router";
+import useError from "./useError";
 
 const tokenCheckURL = "http://192.168.1.6:8000/auth/user";
 const passwordResetURI = "http://192.168.1.6:8000/auth/password-reset";
@@ -10,7 +11,7 @@ const deleteUserURI = "http://192.168.1.6:8000/auth/user";
 const useUserInfoEdit = () => {
   const [prevUserInfo, setPrevUserInfo] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
-  const [submitMessage, setSubmitMessage] = useState({ text: "", type: "" });
+  const { errorObj, errorHandler } = useError();
 
   const userInfoEditHandler = (newInfo) => {
     setUserInfo({
@@ -19,19 +20,9 @@ const useUserInfoEdit = () => {
     });
   };
 
-  const messageHandler = (text, type) => {
-    setSubmitMessage({
-      text,
-      type,
-    });
-    setTimeout(() => {
-      setSubmitMessage({ text: "", type: "" });
-    }, 3000);
-  };
-
   const submitNewInfo = async () => {
     if (userInfo === prevUserInfo) {
-      messageHandler("not any of your information was changed", "warning");
+      errorHandler("not any of your information was changed", "warning");
       return;
     }
 
@@ -51,9 +42,10 @@ const useUserInfoEdit = () => {
         },
       });
 
-      messageHandler("your information updated successfully", "success");
+      setPrevUserInfo(userInfo);
+      errorHandler("your information updated successfully", "success");
     } catch (err) {
-      messageHandler("information update failed", "fail");
+      errorHandler("information update failed", "fail");
     }
   };
 
@@ -67,9 +59,9 @@ const useUserInfoEdit = () => {
         },
       });
 
-      messageHandler(data.message, "success");
+      errorHandler(data.message, "success");
     } catch (err) {
-      messageHandler("password reset failed", "fail");
+      errorHandler("password reset failed", "fail");
     }
   };
 
@@ -88,13 +80,13 @@ const useUserInfoEdit = () => {
           },
         });
 
-        messageHandler("your account has been deleted successfully", "success");
+        errorHandler("your account has been deleted successfully", "success");
         setTimeout(() => {
           localStorage.removeItem("token");
           Router.push("/sign-up");
         }, 2000);
       } catch (err) {
-        messageHandler("account deletion failed", "fail");
+        errorHandler("account deletion failed", "fail");
       }
     }
   };
@@ -122,7 +114,7 @@ const useUserInfoEdit = () => {
 
   return {
     userInfo,
-    submitMessage,
+    submitMessage: errorObj,
     userInfoEditHandler,
     submitNewInfo,
     passwordResetHandler,

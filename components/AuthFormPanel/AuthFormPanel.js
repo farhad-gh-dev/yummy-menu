@@ -5,7 +5,6 @@ export default function AuthFormPanel({
   type,
   redirectLink,
   formData,
-  ErrorMessage,
   guestUser = () => console.log("no handler for guest user."),
   submitHandler = () => console.log("no handler for submit."),
 }) {
@@ -29,7 +28,7 @@ export default function AuthFormPanel({
       <div>
         <button
           className="submit-btn w-100 text-uppercase"
-          onClick={() => !ErrorMessage && submitHandler(formData)}
+          onClick={() => submitHandler(formData)}
         >
           {type}
         </button>

@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import Router from "next/router";
+import useError from "./useError";
 
 const useOrderData = () => {
   const [orderData, setOrderData] = useState(null);
-  const [submitMessage, setSubmitMessage] = useState({
-    text: "",
-    type: "",
-  });
+  const { errorObj, errorHandler } = useError();
 
   const updateSessionStorage = (userOrder) => {
     sessionStorage.setItem("order", JSON.stringify(userOrder));
@@ -101,18 +99,10 @@ const useOrderData = () => {
   };
 
   const submitOrder = () => {
-    if (submitMessage.text) return;
+    if (errorObj.text) return;
 
-    setSubmitMessage({
-      text: "your order will be ready soon",
-      type: "success",
-    });
+    errorHandler("your order will be ready soon", "success");
     setTimeout(() => {
-      setSubmitMessage({
-        text: "",
-        type: "",
-      });
-
       clearSessionStorage();
       setOrderData(null);
       Router.push("/");
@@ -127,7 +117,7 @@ const useOrderData = () => {
   return {
     orderData,
     ordersNumber: orderData ? orderData.items.length : 0,
-    submitMessage,
+    submitMessage: errorObj,
     toggleItemInOrder,
     increaseItemQuantity,
     decreaseItemQuantity,

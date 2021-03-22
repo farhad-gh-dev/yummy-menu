@@ -1,19 +1,21 @@
-import Head from "next/head";
 import axios from "axios";
+import Head from "next/head";
 import useThemeMode from "../hooks/useThemeMode";
 import useTokenCheckInApp from "../hooks/useTokenCheckInApp";
+import useLogOut from "../hooks/useLogOut";
 import useMenuData from "../hooks/useMenuData";
 import useOrderData from "../hooks/useOrderData";
 
 import Alert from "../components/Alerts/Alert";
 import Loading from "../components/Loading/Loading";
 import Navbar from "../components/navbar/Navbar";
-import TypeMenu from "../components/TypeMenu/TypeMenu";
 import CardsMenu from "../components/CardsMenu/CardsMenu";
+import TypeMenu from "../components/TypeMenu/TypeMenu";
 
 export default function Home({ fetchedData }) {
   const { themeIsDark, themeModeHandler } = useThemeMode();
   const { isLoading } = useTokenCheckInApp();
+  const { logoutHandler } = useLogOut();
   const {
     menuData,
     activeType,
@@ -27,8 +29,6 @@ export default function Home({ fetchedData }) {
     increaseItemQuantity,
     decreaseItemQuantity,
   } = useOrderData();
-
-  const logoutHandler = () => console.log("logged-out");
 
   if (isLoading) return <Loading />;
   return (
@@ -58,7 +58,7 @@ export default function Home({ fetchedData }) {
               decreaseItemQuantity={decreaseItemQuantity}
             />
           ) : (
-            <div>loading...</div>
+            <Loading />
           )}
         </div>
         <div>
