@@ -41,9 +41,6 @@ const useMenuData = (fetchedData) => {
         .sort((a, b) => b.orderedTimes - a.orderedTimes)
         .slice(0, 3);
 
-      console.log(formattedMenu[type]);
-      console.log(popularItems);
-
       let itemCategories = ["popular"];
       //GET ALL CATEGORIES FOR THIS TYPE
       formattedMenu[type].map((item) => {

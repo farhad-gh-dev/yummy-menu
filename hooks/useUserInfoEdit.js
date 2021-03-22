@@ -2,6 +2,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Router from "next/router";
 import useError from "./useError";
+import {
+  validUsername,
+  validAddress,
+  validPhoneNumber,
+} from "../utils/FormValidation";
 
 const tokenCheckURL = "http://192.168.1.6:8000/auth/user";
 const passwordResetURI = "http://192.168.1.6:8000/auth/password-reset";
@@ -13,11 +18,48 @@ const useUserInfoEdit = () => {
   const [userInfo, setUserInfo] = useState(null);
   const { errorObj, errorHandler } = useError();
 
-  const userInfoEditHandler = (newInfo) => {
+  const userInfoEditHandler = (inputName, inputValue) => {
+    if (errorObj.text) return;
+
+    //DATA VALIDATION
+    if (!inputValue || inputValue === prevUserInfo[inputName]) {
+      errorHandler(
+        `new ${inputName.replace(/_/g, " ")} is required.`,
+        "warning"
+      );
+      return;
+    }
+
+    if (inputName === "username") {
+      const error = validUsername(inputValue);
+      if (error) {
+        errorHandler(error.message, "warning");
+        return;
+      }
+    }
+
+    if (inputName === "phone_number") {
+      const error = validPhoneNumber(inputValue);
+      if (error) {
+        errorHandler(error.message, "warning");
+        return;
+      }
+    }
+
+    if (inputName === "address") {
+      const error = validAddress(inputValue);
+      if (error) {
+        errorHandler(error.message, "warning");
+        return;
+      }
+    }
+
     setUserInfo({
       ...userInfo,
-      ...newInfo,
+      [inputName]: inputValue,
     });
+
+    return true;
   };
 
   const submitNewInfo = async () => {

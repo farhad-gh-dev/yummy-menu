@@ -7,7 +7,6 @@ const useError = () => {
   });
 
   const errorHandler = (text = "", type = "") => {
-    console.log(text, type);
     setErrorObj({
       text,
       type,

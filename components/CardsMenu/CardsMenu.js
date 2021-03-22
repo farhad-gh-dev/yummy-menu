@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { v4 as uuid } from "uuid";
 
 import ItemCard from "./ItemCard/ItemCard";
 import Loading from "../Loading/Loading";
@@ -33,7 +32,7 @@ export default function CardsMenu({
           {Object.keys(menuData).map((categoryTitle) => {
             return (
               <div
-                key={uuid()}
+                key={categoryTitle}
                 className={`category${
                   activeCategory === categoryTitle ? " active" : ""
                 }`}
@@ -57,7 +56,7 @@ export default function CardsMenu({
                 : null;
               return (
                 <ItemCard
-                  key={uuid}
+                  key={item._id}
                   itemData={item}
                   toggleItemInOrder={toggleItemInOrder}
                   itemOrderInfo={itemOrderInfo}

@@ -1,5 +1,6 @@
 .type-menu {
   width: 100%;
+  padding: 10px 25px 0;
   grid-template-columns: repeat(3, 1fr);
 
   @include md-size {
