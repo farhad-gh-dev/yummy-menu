@@ -51,6 +51,7 @@ export default function signUp() {
               value={formData.email}
               placeholder="Email Address"
               onChange={(e) => formHandler(e)}
+              onKeyDown={(e) => e.key === "Enter" && signUpHandler(formData)}
             />
           </div>
           <div className="input-container">
@@ -60,6 +61,7 @@ export default function signUp() {
               value={formData.username}
               placeholder="Username"
               onChange={(e) => formHandler(e)}
+              onKeyDown={(e) => e.key === "Enter" && signUpHandler(formData)}
             />
           </div>
           <div className="input-container">
@@ -69,6 +71,7 @@ export default function signUp() {
               value={formData.password}
               placeholder="Password"
               onChange={(e) => formHandler(e)}
+              onKeyDown={(e) => e.key === "Enter" && signUpHandler(formData)}
             />
             <div
               className="input-icon"

@@ -76,6 +76,7 @@ export default function UserInfoInput({ passwordResetHandler, closeHandler }) {
           value={inputValues.password}
           placeholder="Enter Your Password"
           onChange={(e) => inputHandler(e)}
+          onKeyDown={(e) => e.key === "Enter" && submitHandler()}
         />
         <input
           className="w-100"
@@ -84,6 +85,7 @@ export default function UserInfoInput({ passwordResetHandler, closeHandler }) {
           value={inputValues.newPassword}
           placeholder="Enter Your New Password"
           onChange={(e) => inputHandler(e)}
+          onKeyDown={(e) => e.key === "Enter" && submitHandler()}
         />
         <input
           className="w-100"
@@ -92,6 +94,7 @@ export default function UserInfoInput({ passwordResetHandler, closeHandler }) {
           value={inputValues.newPasswordRepeat}
           placeholder="Repeat Your New Password"
           onChange={(e) => inputHandler(e)}
+          onKeyDown={(e) => e.key === "Enter" && submitHandler()}
         />
         <div className="buttons-container d-flex">
           <div>

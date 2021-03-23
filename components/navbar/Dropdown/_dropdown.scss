@@ -67,14 +67,12 @@ $dropdown_gradient_color_2: #bed0ee;
     margin-top: 13px;
     visibility: hidden;
     opacity: 0;
-    z-index: -1000;
     transition: 0.5s ease-in-out;
 
     &.show {
       display: block;
       visibility: visible;
       opacity: 1;
-      z-index: auto;
 
       .dropdown-item {
         visibility: visible;
@@ -97,7 +95,6 @@ $dropdown_gradient_color_2: #bed0ee;
       padding: 10px 20px;
       margin-bottom: 10px;
       opacity: 0;
-      z-index: 1000;
 
       &:nth-child(1) {
         transform: translateX(50px);
@@ -116,7 +113,6 @@ $dropdown_gradient_color_2: #bed0ee;
 
       .item-bg-shape {
         @include drop-shadow(0px, 0px, 3px, rgba(0, 0, 0, 0.25));
-        z-index: -100;
         width: 100%;
         height: 100%;
       }
@@ -124,13 +120,11 @@ $dropdown_gradient_color_2: #bed0ee;
       .item-icon {
         width: 13px;
         margin-right: 5px;
-        z-index: 100;
       }
 
       .item-text {
         white-space: nowrap;
         font-size: 13px;
-        z-index: 100;
       }
 
       .mode-toggler {

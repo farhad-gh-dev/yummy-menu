@@ -155,6 +155,14 @@ button {
   }
 }
 
+.cover-parent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .text-color-light {
   color: #ffffff !important;
 }
@@ -191,10 +199,18 @@ button {
   text-align: right !important;
 }
 
-.cover-parent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.z-index-base {
+  z-index: 1;
+}
+
+.z-index-l1 {
+  z-index: 100;
+}
+
+.z-index-l2 {
+  z-index: 500;
+}
+
+.z-index-l3 {
+  z-index: 1000;
 }

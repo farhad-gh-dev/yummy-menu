@@ -5,7 +5,7 @@ export default function Navbar(props) {
   const { ordersNumber, logoutHandler, themeIsDark, themeModeHandler } = props;
 
   return (
-    <div className="navbar">
+    <div className="navbar z-index-l2">
       <div className="left-side">
         <Link href="/">
           <img

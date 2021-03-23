@@ -14,7 +14,11 @@ export default function Alert({ text = "", type = "" }) {
     }
   }, [text]);
   return (
-    <div className={`alert-panel text-cap ${type}${isActive ? " active" : ""}`}>
+    <div
+      className={`alert-panel text-cap z-index-l3 ${type}${
+        isActive ? " active" : ""
+      }`}
+    >
       {alterMessage}
     </div>
   );

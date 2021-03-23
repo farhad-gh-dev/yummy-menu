@@ -50,6 +50,7 @@ export default function signIn() {
               value={formData.usernameOrEmail}
               placeholder="Username, Email Address"
               onChange={(e) => formHandler(e)}
+              onKeyDown={(e) => e.key === "Enter" && signInHandler(formData)}
             />
           </div>
           <div className="input-container">
@@ -59,6 +60,7 @@ export default function signIn() {
               value={formData.password}
               placeholder="Password"
               onChange={(e) => formHandler(e)}
+              onKeyDown={(e) => e.key === "Enter" && signInHandler(formData)}
             />
             <div
               className="input-icon"
