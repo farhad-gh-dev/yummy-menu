@@ -49,6 +49,7 @@ export default function signIn() {
               name="usernameOrEmail"
               value={formData.usernameOrEmail}
               placeholder="Username, Email Address"
+              autoComplete="off"
               onChange={(e) => formHandler(e)}
               onKeyDown={(e) => e.key === "Enter" && signInHandler(formData)}
             />

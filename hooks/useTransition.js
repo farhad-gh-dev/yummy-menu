@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 
-const useTransition = () => {
-  const [showAnimation, setShowAnimation] = useState(false);
+export default function useTransition() {
+  const [isActive, setIsActive] = useState(false);
 
-  const setTransition = () => {
-    return `t-from-top ${showAnimation ? "clear-transition" : ""}`;
+  const setTransition = (classes = "", startPointClass = "t-from-bottom-2") => {
+    return `${classes} ${startPointClass}${
+      isActive ? ` clear-transition` : ""
+    }`;
   };
 
   useEffect(() => {
-    setShowAnimation(true);
+    setIsActive(true);
   }, []);
 
   return {
-    showAnimation,
     setTransition,
   };
-};
-
-export default useTransition;
+}

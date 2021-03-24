@@ -50,6 +50,7 @@ export default function signUp() {
               name="email"
               value={formData.email}
               placeholder="Email Address"
+              autoComplete="off"
               onChange={(e) => formHandler(e)}
               onKeyDown={(e) => e.key === "Enter" && signUpHandler(formData)}
             />
@@ -58,6 +59,7 @@ export default function signUp() {
             <input
               type="text"
               name="username"
+              autoComplete="off"
               value={formData.username}
               placeholder="Username"
               onChange={(e) => formHandler(e)}

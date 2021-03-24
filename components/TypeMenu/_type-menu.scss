@@ -14,9 +14,11 @@
 
     &.active {
       .item-title {
-        margin-bottom: 14px;
-        font-size: 14px;
+        transform: scale(1.25);
         font-weight: bold;
+      }
+      .type-icon {
+        transform: translate(-50%, -50%) scale(1.2);
       }
     }
 
@@ -32,7 +34,8 @@
       filter: drop-shadow(5px 10px 15px rgba(0, 0, 0, 0.15));
     }
 
-    .item-shape {
+    .type-icon {
+      transition: 0.2s ease-in-out;
       position: absolute;
       top: 50%;
       left: 50%;

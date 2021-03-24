@@ -14,7 +14,7 @@ $submit_btn_color: #336cbc;
       button {
         width: 100%;
         padding: 15px;
-        border: 1px solid $secondary_color;
+        border: 1px solid transparent;
         color: $secondary_color;
         border-radius: 10px;
         margin-bottom: 15px;
@@ -25,8 +25,8 @@ $submit_btn_color: #336cbc;
       }
 
       .submit-btn {
-        border-color: $submit_btn_color;
-        color: $submit_btn_color;
+        color: #fff;
+        background-color: lighten($submit_btn_color, 8);
       }
 
       .delete-btn {

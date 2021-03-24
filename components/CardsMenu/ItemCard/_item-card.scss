@@ -43,6 +43,7 @@
       position: absolute;
       bottom: 10px;
       right: 0;
+      border: 2px solid transparent;
       border-radius: 30px;
       border-top-left-radius: 0;
       background-color: #1a1a1a;
@@ -76,9 +77,33 @@
       top: 55px;
       right: 20px;
 
-      img {
+      svg {
         width: 35px;
-        @include drop-shadow(2px, 5px, 8px, rgba(0, 0, 0, 0.3));
+        height: 35px;
+        @include drop-shadow(2px, 6px, 8px, rgba(0, 0, 0, 0.25));
+        transition: 0.2s ease-in-out;
+
+        &:active {
+          transform: scale(1.2);
+        }
+
+        circle {
+          fill: #fa2600;
+        }
+        path {
+          fill: #ffffff;
+        }
+
+        &.active {
+          circle {
+            fill: #ffffff;
+            stroke: rgba(0, 0, 0, 0.15);
+            stroke-width: 2px;
+          }
+          path {
+            fill: #fa2600;
+          }
+        }
       }
     }
   }

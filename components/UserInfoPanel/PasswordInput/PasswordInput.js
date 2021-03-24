@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { validPassword } from "../../../utils/FormValidation";
+import useTransition from "../../../hooks/useTransition";
 
 import Alert from "../../Alerts/Alert";
 
@@ -9,6 +10,8 @@ export default function UserInfoInput({ passwordResetHandler, closeHandler }) {
     newPassword: "",
     newPasswordRepeat: "",
   });
+
+  const { setTransition } = useTransition();
 
   const [inputError, setInputError] = useState("");
 
@@ -66,9 +69,9 @@ export default function UserInfoInput({ passwordResetHandler, closeHandler }) {
   };
 
   return (
-    <div className="user-info-input d-flex align-items-center justify-content-center">
+    <div className="user-info-input z-index-l2 d-flex align-items-center justify-content-center">
       <Alert text={inputError} type="warning" />
-      <div className="input-panel w-100">
+      <div className={setTransition("input-panel w-100", "t-from-bottom-3")}>
         <input
           className="w-100"
           type="password"

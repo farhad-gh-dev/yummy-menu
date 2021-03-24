@@ -26,7 +26,7 @@ export default function TypeMenu({
                 alt="background shape"
                 className="bg-shape"
               />
-              <img src={item.icon} alt="item shape" className="item-shape" />
+              <img src={item.icon} alt="item shape" className="type-icon" />
             </div>
           </div>
         );
