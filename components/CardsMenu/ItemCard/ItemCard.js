@@ -1,9 +1,11 @@
 export default function ItemCard({
   itemData,
   itemOrderInfo,
+  isFavorite,
   toggleItemInOrder = () => {},
   increaseItemQuantity = () => {},
   decreaseItemQuantity = () => {},
+  toggleFavoriteItem = () => {},
 }) {
   if (!itemData) return null;
   return (
@@ -19,13 +21,14 @@ export default function ItemCard({
         </div>
         <button
           className="favorite-button"
-          onClick={() => console.log("added to favorite")}
+          onClick={() => toggleFavoriteItem(itemData._id)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="149"
             height="149"
             viewBox="0 0 149 149"
+            className={`${isFavorite ? "active" : ""}`}
           >
             <defs>
               <filter

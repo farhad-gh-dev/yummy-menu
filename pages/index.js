@@ -5,6 +5,7 @@ import useTokenCheckInApp from "../hooks/useTokenCheckInApp";
 import useLogOut from "../hooks/useLogOut";
 import useMenuData from "../hooks/useMenuData";
 import useOrderData from "../hooks/useOrderData";
+import useFavoriteItems from "../hooks/useFavoriteItems";
 
 import Alert from "../components/Alerts/Alert";
 import Loading from "../components/Loading/Loading";
@@ -29,6 +30,7 @@ export default function Home({ fetchedData }) {
     increaseItemQuantity,
     decreaseItemQuantity,
   } = useOrderData();
+  const { favoriteItems, toggleFavoriteItem } = useFavoriteItems();
 
   if (isLoading) return <Loading />;
   return (
@@ -53,9 +55,11 @@ export default function Home({ fetchedData }) {
             <CardsMenu
               menuData={menuData[`${activeType}`]}
               orderData={orderData}
+              favoriteItems={favoriteItems}
               toggleItemInOrder={toggleItemInOrder}
               increaseItemQuantity={increaseItemQuantity}
               decreaseItemQuantity={decreaseItemQuantity}
+              toggleFavoriteItem={toggleFavoriteItem}
             />
           ) : (
             <Loading />

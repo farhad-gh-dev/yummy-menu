@@ -7,9 +7,11 @@ import Loading from "../Loading/Loading";
 export default function CardsMenu({
   menuData,
   orderData,
-  toggleItemInOrder = () => {},
-  increaseItemQuantity = () => {},
-  decreaseItemQuantity = () => {},
+  favoriteItems,
+  toggleItemInOrder,
+  increaseItemQuantity,
+  decreaseItemQuantity,
+  toggleFavoriteItem,
 }) {
   const [activeCategory, setActiveCategory] = useState("popular");
 
@@ -58,10 +60,14 @@ export default function CardsMenu({
                 <ItemCard
                   key={item._id}
                   itemData={item}
+                  isFavorite={
+                    favoriteItems ? favoriteItems.includes(item._id) : false
+                  }
                   toggleItemInOrder={toggleItemInOrder}
                   itemOrderInfo={itemOrderInfo}
                   increaseItemQuantity={increaseItemQuantity}
                   decreaseItemQuantity={decreaseItemQuantity}
+                  toggleFavoriteItem={toggleFavoriteItem}
                 />
               );
             })}
