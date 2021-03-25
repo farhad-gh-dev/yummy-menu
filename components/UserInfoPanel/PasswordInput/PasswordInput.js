@@ -1,8 +1,5 @@
 import { useState } from "react";
-import { validPassword } from "../../../utils/FormValidation";
 import useTransition from "../../../hooks/useTransition";
-
-import Alert from "../../Alerts/Alert";
 
 export default function UserInfoInput({ passwordResetHandler, closeHandler }) {
   const [inputValues, setInputValues] = useState({
@@ -13,65 +10,25 @@ export default function UserInfoInput({ passwordResetHandler, closeHandler }) {
 
   const { setTransition } = useTransition();
 
-  const [inputError, setInputError] = useState("");
-
   const inputHandler = (e) =>
     setInputValues({
       ...inputValues,
       [e.target.name]: e.target.value,
     });
 
-  const errorHandler = (errorText) => {
-    if (inputError) return;
-    setInputError(errorText);
-    setTimeout(() => {
-      setInputError("");
-    }, 3000);
-  };
-
   const submitHandler = () => {
-    const { password, newPassword, newPasswordRepeat } = inputValues;
-
-    if (!password || !newPasswordRepeat || !newPasswordRepeat) {
-      errorHandler(`Please complete all required fields.`);
-      return;
-    }
-
-    if (password === newPassword) {
-      errorHandler(
-        `Please enter a different password from your current password`
-      );
-      return;
-    }
-
-    if (newPassword !== newPasswordRepeat) {
-      errorHandler(`New Password Repeat is not the same as New Password`);
-      return;
-    }
-
-    let error = null;
-
-    for (const item of Object.keys(inputValues)) {
-      error = validPassword(inputValues[item]);
-      if (error) break;
-    }
-
-    if (error) {
-      errorHandler(error.message);
-      return;
-    }
-
-    passwordResetHandler({
-      password,
-      newPassword,
-    });
-    closeHandler();
+    const passwordResetSuccess = passwordResetHandler(inputValues);
+    if (passwordResetSuccess) closeHandler();
   };
 
   return (
     <div className="user-info-input z-index-l2 d-flex align-items-center justify-content-center">
-      <Alert text={inputError} type="warning" />
-      <div className={setTransition("input-panel w-100", "t-from-bottom-3")}>
+      <div
+        className={setTransition(
+          "input-panel w-100",
+          "custom-transition opacity from-bottom-3 duration-400"
+        )}
+      >
         <input
           className="w-100"
           type="password"

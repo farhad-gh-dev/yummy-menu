@@ -3,6 +3,7 @@ import useTokenCheckInApp from "../hooks/useTokenCheckInApp";
 import useThemeMode from "../hooks/useThemeMode";
 import useLogOut from "../hooks/useLogOut";
 import useOrderData from "../hooks/useOrderData";
+import usePasswordReset from "../hooks/usePasswordReset";
 import useUserInfoEdit from "../hooks/useUserInfoEdit";
 
 import Loading from "../components/Loading/Loading";
@@ -15,12 +16,12 @@ export default function Profile() {
   const { themeIsDark, themeModeHandler } = useThemeMode();
   const { logoutHandler } = useLogOut();
   const { ordersNumber } = useOrderData();
+  const { passwordResetMessage, passwordResetHandler } = usePasswordReset();
   const {
     userInfo,
     submitMessage,
     userInfoEditHandler,
     submitNewInfo,
-    passwordResetHandler,
     deleteUserHandler,
   } = useUserInfoEdit();
 
@@ -39,6 +40,10 @@ export default function Profile() {
       />
 
       <Alert text={submitMessage.text} type={submitMessage.type} />
+      <Alert
+        text={passwordResetMessage.text}
+        type={passwordResetMessage.type}
+      />
       <div className="section-container d-flex flex-column flex-fill">
         <div className="flex-fill">
           {userInfo ? (

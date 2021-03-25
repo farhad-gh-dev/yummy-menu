@@ -9,7 +9,6 @@ import {
 } from "../utils/FormValidation";
 
 const tokenCheckURL = "http://192.168.1.6:8000/auth/user";
-const passwordResetURI = "http://192.168.1.6:8000/auth/password-reset";
 const userInfoEditURI = "http://192.168.1.6:8000/auth/user";
 const deleteUserURI = "http://192.168.1.6:8000/auth/user";
 
@@ -91,22 +90,6 @@ const useUserInfoEdit = () => {
     }
   };
 
-  const passwordResetHandler = async (passwords) => {
-    const token = localStorage.getItem("token");
-
-    try {
-      const { data } = await axios.post(passwordResetURI, passwords, {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      });
-
-      errorHandler(data.message, "success");
-    } catch (err) {
-      errorHandler("password reset failed", "fail");
-    }
-  };
-
   const deleteUserHandler = async () => {
     if (
       confirm(
@@ -159,7 +142,6 @@ const useUserInfoEdit = () => {
     submitMessage: errorObj,
     userInfoEditHandler,
     submitNewInfo,
-    passwordResetHandler,
     deleteUserHandler,
   };
 };
