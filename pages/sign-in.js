@@ -32,51 +32,53 @@ export default function signIn() {
         </Head>
 
         <Alert text={authError.text} type={authError.type} />
-        <AuthFormPanel
-          type="sign in"
-          redirectLink={{
-            description: "don't have an account,",
-            buttonTitle: "sign up",
-            to: "/sign-up",
-          }}
-          guestUser={guestUser}
-          formData={formData}
-          submitHandler={signInHandler}
-        >
-          <div className="input-container">
-            <input
-              type="text"
-              name="usernameOrEmail"
-              value={formData.usernameOrEmail}
-              placeholder="Username, Email Address"
-              autoComplete="off"
-              onChange={(e) => formHandler(e)}
-              onKeyDown={(e) => e.key === "Enter" && signInHandler(formData)}
-            />
-          </div>
-          <div className="input-container">
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              value={formData.password}
-              placeholder="Password"
-              onChange={(e) => formHandler(e)}
-              onKeyDown={(e) => e.key === "Enter" && signInHandler(formData)}
-            />
-            <div
-              className="input-icon"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              <div className="p-relative">
-                <img
-                  src={`/design-utils/show-password.png`}
-                  alt="show password"
-                />
-                {showPassword && <div className="hide-password"></div>}
+        <div className="section-container h-100">
+          <AuthFormPanel
+            type="sign in"
+            redirectLink={{
+              description: "don't have an account,",
+              buttonTitle: "sign up",
+              to: "/sign-up",
+            }}
+            guestUser={guestUser}
+            formData={formData}
+            submitHandler={signInHandler}
+          >
+            <div className="input-container">
+              <input
+                type="text"
+                name="usernameOrEmail"
+                value={formData.usernameOrEmail}
+                placeholder="Username, Email Address"
+                autoComplete="off"
+                onChange={(e) => formHandler(e)}
+                onKeyDown={(e) => e.key === "Enter" && signInHandler(formData)}
+              />
+            </div>
+            <div className="input-container">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={formData.password}
+                placeholder="Password"
+                onChange={(e) => formHandler(e)}
+                onKeyDown={(e) => e.key === "Enter" && signInHandler(formData)}
+              />
+              <div
+                className="input-icon"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                <div className="p-relative">
+                  <img
+                    src={`/design-utils/show-password.png`}
+                    alt="show password"
+                  />
+                  {showPassword && <div className="hide-password"></div>}
+                </div>
               </div>
             </div>
-          </div>
-        </AuthFormPanel>
+          </AuthFormPanel>
+        </div>
       </div>
     );
 

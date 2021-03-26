@@ -94,22 +94,26 @@
     margin-bottom: 100px;
   }
 
-  .submit-btn {
-    padding: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    border: 3px solid #f47722;
-    border-radius: 100px;
-    color: #f47722;
-    background-color: rgba(#f64d16, 0.2);
-    margin-bottom: 20px;
-    text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-    transition: 0.1s ease-in-out;
+  .bottom-section {
+    padding-bottom: 45px;
 
-    &:focus {
-      border: 3px solid #f64d16;
-      color: #f64d16;
-      letter-spacing: 1px;
+    .submit-btn {
+      padding: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      border: 3px solid #f47722;
+      border-radius: 100px;
+      color: #f47722;
+      background-color: rgba(#f64d16, 0.2);
+      margin-bottom: 20px;
+      text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+      transition: 0.1s ease-in-out;
+
+      &:focus {
+        border: 3px solid #f64d16;
+        color: #f64d16;
+        letter-spacing: 1px;
+      }
     }
   }
 }

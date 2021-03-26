@@ -9,8 +9,8 @@ export default function AuthFormPanel({
   submitHandler = () => console.log("no handler for submit."),
 }) {
   return (
-    <div className="auth-form-panel d-flex flex-column h-100">
-      <div className="flex-fill">
+    <div className="auth-form-panel p-relative d-flex flex-column h-100">
+      <div className="top-section flex-fill">
         <div className="logo-container text-center">
           <img src="/logo/logo-light.svg" alt="yummy menu" className="logo" />
         </div>
@@ -25,7 +25,7 @@ export default function AuthFormPanel({
           </button>
         </div>
       </div>
-      <div>
+      <div className="bottom-section">
         <button
           className="submit-btn w-100 text-uppercase"
           onClick={() => submitHandler(formData)}

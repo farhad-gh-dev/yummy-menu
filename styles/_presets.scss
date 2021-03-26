@@ -32,6 +32,7 @@ body,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background: rgb(237, 242, 250);
   background-image: $light_theme_bg;
+  box-sizing: border-box !important;
 }
 
 .secondary-font {
