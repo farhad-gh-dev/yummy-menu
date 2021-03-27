@@ -35,6 +35,21 @@ body,
   box-sizing: border-box !important;
 }
 
+#__next {
+  @include sm-size() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 90vh;
+    overflow: hidden;
+    border: 1px solid rgba(#141414, 0.15);
+    border-radius: 20px;
+    @include drop-shadow(5px, 5px, 15px, rgba(0, 0, 0, 0.2));
+  }
+}
+
 .secondary-font {
   font-family: -apple-system, BlinkMacSystemFont, "Caveat", Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;

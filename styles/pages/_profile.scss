@@ -3,12 +3,14 @@ $edit_btn_color: #336cbc;
 $submit_btn_color: #336cbc;
 
 .user-page {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
+  overflow-y: auto;
 
   .section-container {
     padding: 25px 35px 35px;
+    overflow-y: auto;
 
     .submit-buttons {
       button {
