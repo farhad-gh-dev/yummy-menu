@@ -54,7 +54,7 @@ export default function Dropdown(props) {
 
         <div className="dropdown-item z-index-l3 d-inline-block">
           <div
-            className="d-flex align-items-center"
+            className="d-flex cursor-pointer align-items-center"
             onClick={() => logoutHandler()}
           >
             <img
@@ -78,7 +78,9 @@ export default function Dropdown(props) {
               alt="item background"
               className="item-bg-shape z-index-base w-100 h-100 p-absolute from-right"
             />
-            <div className="item-text z-index-l1 text-cap">theme mode</div>
+            <div className="item-text z-index-l1 cursor-none text-cap">
+              theme mode
+            </div>
             <div
               className={`mode-toggler z-index-l1 d-flex align-items-center justify-content-center text-cap${
                 themeIsDark ? " dark-mode" : ""
