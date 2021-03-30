@@ -1,15 +1,26 @@
+import useTransition from "../../hooks/useTransition";
+
 export default function OrderedItems({
   orderData,
   toggleItemInOrder,
   increaseItemQuantity,
   decreaseItemQuantity,
 }) {
+  const { setTransition } = useTransition();
+
   return (
     <div className="ordered-items">
       <div className="title text-cap text-weight-bold">your order</div>
-      {orderData.items.map((item) => {
+      {orderData.items.map((item, index) => {
         return (
-          <div className="card-container p-relative">
+          <div
+            className={setTransition(
+              "card-container p-relative",
+              `custom-transition opacity duration-500 from-right-3 delay-${
+                (index + 1) * 100
+              }`
+            )}
+          >
             <img
               src="/design-utils/order-card.png"
               className="bg-shape w-100"
