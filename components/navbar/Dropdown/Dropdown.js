@@ -29,7 +29,11 @@ export default function Dropdown(props) {
   };
 
   return (
-    <div className="navbar-dropdown-menu p-relative">
+    <div
+      className={`navbar-dropdown-menu p-relative${
+        themeIsDark ? " dark-theme" : ""
+      }`}
+    >
       <button
         onClick={() => handleDropdownStatus()}
         className={`dropdown-button p-relative d-flex justify-content-center align-items-center${
@@ -48,7 +52,9 @@ export default function Dropdown(props) {
         <DropdownLink
           icon={"/design-utils/user.svg"}
           text={"your profile"}
-          bgShape={"/design-utils/navbar-dp-shape-1.png"}
+          bgShape={`/design-utils/navbar-dp-${
+            themeIsDark ? "dark-" : ""
+          }shape-1.png`}
           targetLink={"/profile"}
         />
 
@@ -58,7 +64,9 @@ export default function Dropdown(props) {
             onClick={() => logoutHandler()}
           >
             <img
-              src="/design-utils/navbar-dp-shape-2.png"
+              src={`/design-utils/navbar-dp-${
+                themeIsDark ? "dark-" : ""
+              }shape-2.png`}
               alt="item background"
               className="item-bg-shape z-index-base p-absolute from-right"
             />
@@ -74,7 +82,9 @@ export default function Dropdown(props) {
         <div className="dropdown-item z-index-l3 d-inline-block">
           <div className="d-flex align-items-center">
             <img
-              src="/design-utils/navbar-dp-shape-3.png"
+              src={`/design-utils/navbar-dp-${
+                themeIsDark ? "dark-" : ""
+              }shape-3.png`}
               alt="item background"
               className="item-bg-shape z-index-base w-100 h-100 p-absolute from-right"
             />

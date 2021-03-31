@@ -52,7 +52,7 @@ body {
 
 #__next {
   background: rgb(237, 242, 250);
-  background-image: $light_theme_bg !important;
+  background-image: $light_theme_bg;
 
   @include sm-size() {
     position: absolute;
@@ -66,6 +66,16 @@ body {
     border-radius: 20px;
     @include drop-shadow(0, 0, 50px, rgba(0, 0, 0, 0.2));
     overflow: hidden;
+  }
+}
+
+.--page-container {
+  background: red;
+  background-image: $light_theme_bg !important;
+
+  &.dark-theme {
+    background: red;
+    background-image: $dark_theme_bg !important;
   }
 }
 

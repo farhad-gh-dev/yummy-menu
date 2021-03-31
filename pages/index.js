@@ -34,7 +34,11 @@ export default function Home({ fetchedData }) {
 
   if (isLoading) return <Loading />;
   return (
-    <div className="menu-page d-flex flex-column">
+    <div
+      className={`page-container menu-page d-flex flex-column${
+        themeIsDark ? " dark-theme" : ""
+      }`}
+    >
       <Head>
         <title>Yummy Menu</title>
         <link rel="icon" href="/favicon.ico" />

@@ -40,4 +40,12 @@
       }
     }
   }
+
+  &.dark-theme {
+    .shopping-card {
+      img {
+        filter: invert(1);
+      }
+    }
+  }
 }
