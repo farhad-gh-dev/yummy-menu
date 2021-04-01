@@ -43,4 +43,12 @@
       width: 25px;
     }
   }
+
+  &.dark-theme {
+    .menu-item {
+      .item-title {
+        color: #ffffff;
+      }
+    }
+  }
 }

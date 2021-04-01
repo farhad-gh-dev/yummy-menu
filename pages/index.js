@@ -57,6 +57,7 @@ export default function Home({ fetchedData }) {
         <div className="flex-fill">
           {menuData !== null ? (
             <CardsMenu
+              themeIsDark={themeIsDark}
               menuData={menuData[`${activeType}`]}
               orderData={orderData}
               favoriteItems={favoriteItems}
@@ -71,6 +72,7 @@ export default function Home({ fetchedData }) {
         </div>
         <div>
           <TypeMenu
+            themeIsDark={themeIsDark}
             activeType={activeType}
             activeTypeHandler={activeTypeHandler}
           />

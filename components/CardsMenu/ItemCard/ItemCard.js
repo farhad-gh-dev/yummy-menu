@@ -1,4 +1,5 @@
 export default function ItemCard({
+  themeIsDark,
   itemData,
   itemOrderInfo,
   isFavorite,
@@ -9,9 +10,9 @@ export default function ItemCard({
 }) {
   if (!itemData) return null;
   return (
-    <div className="item-card p-relative">
+    <div className={`item-card p-relative${themeIsDark ? " dark-theme" : ""}`}>
       <img
-        src="/design-utils/item-card-bg.png"
+        src={`/design-utils/item-card-${themeIsDark ? "dark-" : ""}bg.png`}
         alt="card background"
         className="background-shape"
       />
@@ -87,7 +88,10 @@ export default function ItemCard({
               className="increase"
               onClick={() => increaseItemQuantity(itemData._id)}
             >
-              <img src="/design-utils/increase.svg" alt="increase" />
+              <img
+                src={`/design-utils/increase${themeIsDark ? "-dark" : ""}.svg`}
+                alt="increase"
+              />
             </button>
             <div className="order-number text-weight-bold">
               {itemOrderInfo.quantity}
@@ -96,7 +100,10 @@ export default function ItemCard({
               className="decrease"
               onClick={() => decreaseItemQuantity(itemData._id)}
             >
-              <img src="/design-utils/decrease.svg" alt="decease" />
+              <img
+                src={`/design-utils/decrease${themeIsDark ? "-dark" : ""}.svg`}
+                alt="decease"
+              />
             </button>
           </div>
         ) : null}

@@ -69,13 +69,17 @@ body {
   }
 }
 
-.--page-container {
+.page-container {
   background: red;
   background-image: $light_theme_bg !important;
 
   &.dark-theme {
     background: red;
     background-image: $dark_theme_bg !important;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 

@@ -1,4 +1,5 @@
 export default function TypeMenu({
+  themeIsDark,
   activeType = "burger",
   activeTypeHandler = () => {},
 }) {
@@ -9,7 +10,7 @@ export default function TypeMenu({
   ];
 
   return (
-    <div className="type-menu d-grid">
+    <div className={`type-menu d-grid${themeIsDark ? " dark-theme" : ""}`}>
       {types.map((item) => {
         return (
           <div
@@ -22,7 +23,9 @@ export default function TypeMenu({
               onClick={() => activeTypeHandler(item.title)}
             >
               <img
-                src="/design-utils/type-menu-shape.svg"
+                src={`/design-utils/type-menu-${
+                  themeIsDark ? "dark-" : ""
+                }shape.svg`}
                 alt="background shape"
                 className="bg-shape"
               />

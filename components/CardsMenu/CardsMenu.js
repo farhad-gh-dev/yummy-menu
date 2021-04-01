@@ -5,6 +5,7 @@ import Loading from "../Loading/Loading";
 
 //better solution for active category update (?)
 export default function CardsMenu({
+  themeIsDark,
   menuData,
   orderData,
   favoriteItems,
@@ -29,7 +30,11 @@ export default function CardsMenu({
 
   if (menuData && Object.keys(menuData).includes(activeCategory))
     return (
-      <div className="cards-menu h-100 d-flex flex-column">
+      <div
+        className={`cards-menu h-100 d-flex flex-column${
+          themeIsDark ? " dark-theme" : ""
+        }`}
+      >
         <div className="cards-categories">
           {Object.keys(menuData).map((categoryTitle) => {
             return (
@@ -59,6 +64,7 @@ export default function CardsMenu({
               return (
                 <ItemCard
                   key={item._id}
+                  themeIsDark={themeIsDark}
                   itemData={item}
                   isFavorite={
                     favoriteItems ? favoriteItems.includes(item._id) : false

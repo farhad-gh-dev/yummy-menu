@@ -107,4 +107,34 @@
       }
     }
   }
+
+  &.dark-theme {
+    .card-content {
+      .item-text {
+        .title,
+        .description {
+          color: #ffffff;
+        }
+      }
+
+      .add-button {
+        color: #000000;
+        background-color: #ffffff;
+        font-weight: bold;
+      }
+
+      .item-counter {
+        .increase,
+        .decrease {
+          img {
+            @include drop-shadow(-2px, -2px, 5px, rgba(255, 255, 255, 0.1));
+          }
+        }
+
+        .order-number {
+          color: #fff;
+        }
+      }
+    }
+  }
 }
