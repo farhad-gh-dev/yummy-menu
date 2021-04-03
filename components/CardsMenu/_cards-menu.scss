@@ -3,11 +3,8 @@
     padding: 0 35px;
     width: 100%;
     overflow-x: auto;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
     white-space: nowrap;
+    @include mobile-scrollbar();
 
     &::-webkit-scrollbar {
       display: none;
@@ -50,13 +47,15 @@
     height: 0px;
     white-space: nowrap;
     overflow-x: auto;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
 
-    &::-webkit-scrollbar {
-      display: none;
+    @include mobile-scrollbar();
+
+    @include sm-size {
+      overflow-x: hidden;
+      &:hover {
+        overflow-x: auto;
+      }
+      @include desktop-scrollbar-light();
     }
   }
 
@@ -64,6 +63,12 @@
     .cards-categories {
       .category {
         color: #ffffff;
+      }
+    }
+
+    .cards-container {
+      @include sm-size {
+        @include desktop-scrollbar-dark();
       }
     }
   }

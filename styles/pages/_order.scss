@@ -10,7 +10,7 @@
 
     .ordered-items-container {
       overflow-y: auto;
-      @include hidden-scrollbar;
+      @include mobile-scrollbar;
     }
 
     .empty-order {

@@ -77,10 +77,6 @@ body {
     background: red;
     background-image: $dark_theme_bg !important;
   }
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
 }
 
 .secondary-font {
