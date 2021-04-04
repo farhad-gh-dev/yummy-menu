@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 
-export default function OrderSubmit({ submitHandler, orderData = null }) {
+export default function OrderSubmit({
+  themeIsDark,
+  submitHandler,
+  orderData = null,
+}) {
   const [totalCost, setTotalCost] = useState(null);
   const deliveryCost = 0;
 
@@ -17,7 +21,7 @@ export default function OrderSubmit({ submitHandler, orderData = null }) {
   }, [orderData]);
 
   return (
-    <div className="order-submit">
+    <div className={`order-submit${themeIsDark ? " dark-theme" : ""}`}>
       <div className="cost-items-container">
         <div className="cost-item d-flex justify-space-between">
           <div className="item-title">delivery fee</div>

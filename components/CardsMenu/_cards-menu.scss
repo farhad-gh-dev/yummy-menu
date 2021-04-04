@@ -47,10 +47,17 @@
     height: 0px;
     white-space: nowrap;
     overflow-x: auto;
-
     @include mobile-scrollbar();
 
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
     @include sm-size {
+      &::-webkit-scrollbar {
+        display: unset;
+      }
+
       overflow-x: hidden;
       &:hover {
         overflow-x: auto;

@@ -26,7 +26,11 @@ export default function Order() {
 
   if (isLoading) return <Loading />;
   return (
-    <div className="order-page d-flex flex-column">
+    <div
+      className={`page-container order-page d-flex flex-column${
+        themeIsDark ? " dark-theme" : ""
+      }`}
+    >
       <Head>
         <title>Yummy Menu</title>
         <link rel="icon" href="/favicon.ico" />
@@ -43,13 +47,18 @@ export default function Order() {
         <div className="section-container d-flex flex-column flex-fill">
           <div className="ordered-items-container flex-fill">
             <OrderedItemsPanel
+              themeIsDark={themeIsDark}
               orderData={orderData}
               toggleItemInOrder={toggleItemInOrder}
               increaseItemQuantity={increaseItemQuantity}
               decreaseItemQuantity={decreaseItemQuantity}
             />
           </div>
-          <OrderSubmit submitHandler={submitOrder} orderData={orderData} />
+          <OrderSubmit
+            themeIsDark={themeIsDark}
+            submitHandler={submitOrder}
+            orderData={orderData}
+          />
         </div>
       ) : (
         <div className="section-container d-flex flex-column flex-fill p-relative">

@@ -1,6 +1,7 @@
 import useTransition from "../../hooks/useTransition";
 
 export default function OrderedItems({
+  themeIsDark,
   orderData,
   toggleItemInOrder,
   increaseItemQuantity,
@@ -9,7 +10,7 @@ export default function OrderedItems({
   const { setTransition } = useTransition();
 
   return (
-    <div className="ordered-items">
+    <div className={`ordered-items${themeIsDark ? " dark-theme" : ""}`}>
       <div className="title text-cap text-weight-bold">your order</div>
       {orderData.items.map((item, index) => {
         return (
@@ -22,7 +23,7 @@ export default function OrderedItems({
             )}
           >
             <img
-              src="/design-utils/order-card.png"
+              src={`/design-utils/order-card${themeIsDark ? "-dark" : ""}.png`}
               className="bg-shape w-100"
               alt="card background"
             />
@@ -45,7 +46,12 @@ export default function OrderedItems({
                     onClick={() => increaseItemQuantity(item._id)}
                     className="increase"
                   >
-                    <img src="/design-utils/increase.svg" alt="increase" />
+                    <img
+                      src={`/design-utils/increase${
+                        themeIsDark ? "-dark" : ""
+                      }.svg`}
+                      alt="increase"
+                    />
                   </button>
                   <div className="number-of-orders text-weight-bold">
                     {item.quantity}
@@ -54,7 +60,12 @@ export default function OrderedItems({
                     onClick={() => decreaseItemQuantity(item._id)}
                     className="decrease"
                   >
-                    <img src="/design-utils/decrease.svg" alt="decrease" />
+                    <img
+                      src={`/design-utils/decrease${
+                        themeIsDark ? "-dark" : ""
+                      }.svg`}
+                      alt="decrease"
+                    />
                   </button>
                 </div>
               </div>
@@ -69,7 +80,7 @@ export default function OrderedItems({
                 onClick={() => toggleItemInOrder(item)}
               >
                 <img
-                  src="/design-utils/remove.png"
+                  src={`/design-utils/remove${themeIsDark ? "-dark" : ""}.png`}
                   alt="remove button"
                   className="w-100"
                 />

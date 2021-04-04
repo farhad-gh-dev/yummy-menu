@@ -6,11 +6,24 @@
 
   .section-container {
     padding: 25px 25px 35px;
+    overflow: hidden;
     overflow-y: auto;
 
     .ordered-items-container {
+      overflow: hidden;
       overflow-y: auto;
-      @include mobile-scrollbar;
+      @include mobile-scrollbar();
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      @include sm-size {
+        &::-webkit-scrollbar {
+          display: unset;
+        }
+        @include desktop-scrollbar-light();
+      }
     }
 
     .empty-order {
@@ -38,6 +51,20 @@
       .redirect-link {
         color: $secondary_color;
         font-size: 1.5rem;
+      }
+    }
+  }
+
+  &.dark-theme {
+    .ordered-items-container {
+      @include sm-size {
+        @include desktop-scrollbar-dark();
+      }
+    }
+
+    .empty-order {
+      .message-title {
+        color: rgba(255, 255, 255, 0.2);
       }
     }
   }
