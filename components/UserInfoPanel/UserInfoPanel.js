@@ -3,6 +3,7 @@ import UserInfoInput from "./UserInfoInput/UserInfoInput";
 import PasswordInput from "./PasswordInput/PasswordInput";
 
 export default function UserInfoPanel({
+  themeIsDark,
   userInfo,
   userInfoEditHandler,
   passwordResetHandler,
@@ -12,7 +13,7 @@ export default function UserInfoPanel({
   const clearActiveInput = () => setActiveInput(null);
 
   return (
-    <div className="user-info-panel">
+    <div className={`user-info-panel${themeIsDark ? " dark-theme" : ""}`}>
       {activeInput && activeInput !== "password" ? (
         <UserInfoInput
           inputName={activeInput}

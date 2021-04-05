@@ -56,12 +56,12 @@ $red_btn_bg_color: #fa2600;
       .edit-btn {
         font-size: 14px;
         padding: 0;
-        color: $edit_btn_color;
+        color: $edit_btn_light_theme;
       }
 
       .password-reset-btn {
         font-size: 16px;
-        color: $blue_btn_bg_color;
+        color: $edit_btn_light_theme;
       }
     }
   }
@@ -120,6 +120,55 @@ $red_btn_bg_color: #fa2600;
 
             &.red-bg {
               background-color: $red_btn_bg_color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.dark-theme {
+    .title {
+      color: #ffffff;
+    }
+
+    .info-cards-container {
+      .info-card {
+        color: #ffffff;
+
+        .no-card-description {
+          color: rgba(255, 255, 255, 0.5);
+        }
+
+        .edit-btn {
+          color: $edit_btn_dark_theme;
+        }
+
+        .password-reset-btn {
+          color: $edit_btn_dark_theme;
+        }
+      }
+    }
+
+    .user-info-input {
+      .input-panel {
+        @include gradient-background(90deg, #16171a, #2e3135);
+        box-shadow: -10px -10px 80px rgba(255, 255, 255, 0.1);
+
+        input {
+          background-color: transparent;
+          color: #ffffff;
+          border-bottom-color: rgba(255, 255, 255, 0.5);
+
+          &::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+          }
+        }
+
+        .buttons-container {
+          div {
+            button {
+              border-color: transparent;
             }
           }
         }

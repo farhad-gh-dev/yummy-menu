@@ -27,7 +27,11 @@ export default function Profile() {
 
   if (isLoading) return <Loading />;
   return (
-    <div className="user-page d-flex flex-column">
+    <div
+      className={`page-container user-page d-flex flex-column${
+        themeIsDark ? " dark-theme" : ""
+      }`}
+    >
       <Head>
         <title>Yummy Menu</title>
         <link rel="icon" href="/favicon.ico" />
@@ -48,6 +52,7 @@ export default function Profile() {
         <div className="flex-fill">
           {userInfo ? (
             <UserInfoPanel
+              themeIsDark={themeIsDark}
               userInfo={userInfo}
               userInfoEditHandler={userInfoEditHandler}
               submitNewInfo={submitNewInfo}
