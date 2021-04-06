@@ -9,7 +9,7 @@
 
   .background-shape {
     height: auto;
-    width: 290px;
+    max-height: 350px;
     @include drop-shadow(5px, 0px, 15px, rgba(0, 0, 0, 0.1));
   }
 

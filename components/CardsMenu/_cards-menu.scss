@@ -46,6 +46,7 @@
     flex: 1 1 auto;
     height: 0px;
     white-space: nowrap;
+    overflow-y: hidden;
     overflow-x: auto;
     @include mobile-scrollbar();
 
