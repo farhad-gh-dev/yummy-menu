@@ -1,7 +1,7 @@
 $dropdown_gradient_deg: -45deg;
 $light_dropdown_gradient_color_1: #e8f7fd;
 $light_dropdown_gradient_color_2: #bed0ee;
-$dark_dropdown_gradient_color_1: #1d2024;
+$dark_dropdown_gradient_color_1: #4a4e52;
 $dark_dropdown_gradient_color_2: #1d2024;
 
 .navbar-dropdown-menu {
@@ -187,6 +187,8 @@ $dark_dropdown_gradient_color_2: #1d2024;
 
   &.dark-theme {
     .dropdown-button {
+      background: #000000;
+
       &::before {
         @include gradient-background(
           $dropdown_gradient_deg,
