@@ -3,10 +3,6 @@
   padding: 10px 25px 0;
   grid-template-columns: repeat(3, 1fr);
 
-  @include md-size {
-    width: 400px;
-  }
-
   .menu-item {
     padding: 0 15px;
     position: relative;

@@ -62,6 +62,11 @@ const useUserInfoEdit = () => {
   };
 
   const submitNewInfo = async () => {
+    if (userInfo.email === "guest-user@gmail.com") {
+      errorHandler("Guest user information can not be modified", "fail");
+      return;
+    }
+
     if (userInfo === prevUserInfo) {
       errorHandler("not any of your information was changed", "warning");
       return;
