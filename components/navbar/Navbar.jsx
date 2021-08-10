@@ -11,7 +11,7 @@ export default function Navbar(props) {
           <img
             src="/logo/logo-light.svg"
             alt="yummy menu"
-            className="company-logo"
+            className="cursor-pointer company-logo"
           />
         </Link>
       </div>

@@ -17,12 +17,8 @@ export default function Home({ fetchedData }) {
   const { themeIsDark, themeModeHandler } = useThemeMode();
   const { isLoading } = useTokenCheckInApp();
   const { logoutHandler } = useLogOut();
-  const {
-    menuData,
-    activeType,
-    menuDataError,
-    activeTypeHandler,
-  } = useMenuData(fetchedData);
+  const { menuData, activeType, menuDataError, activeTypeHandler } =
+    useMenuData(fetchedData);
   const {
     orderData,
     ordersNumber,
