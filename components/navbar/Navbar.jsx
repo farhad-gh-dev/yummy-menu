@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Dropdown from "./DropDown/Dropdown";
+import Dropdown from "./Dropdown/Dropdown";
 
 export default function Navbar(props) {
   const { ordersNumber, logoutHandler, themeIsDark, themeModeHandler } = props;
