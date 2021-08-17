@@ -8,9 +8,9 @@ import {
   validPhoneNumber,
 } from "../utils/FormValidation";
 
-const tokenCheckURL = "http://192.168.1.6:8000/auth/user";
-const userInfoEditURI = "http://192.168.1.6:8000/auth/user";
-const deleteUserURI = "http://192.168.1.6:8000/auth/user";
+const tokenCheckURL = "https://applications-backend.herokuapp.com/auth/user";
+const userInfoEditURI = "https://applications-backend.herokuapp.com/auth/user";
+const deleteUserURI = "https://applications-backend.herokuapp.com/auth/user";
 
 const useUserInfoEdit = () => {
   const [prevUserInfo, setPrevUserInfo] = useState(null);

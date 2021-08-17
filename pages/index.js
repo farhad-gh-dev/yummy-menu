@@ -80,7 +80,7 @@ export default function Home({ fetchedData }) {
 
 export async function getServerSideProps() {
   const { data } = await axios.get(
-    `http://localhost:8000/yummy-menu/menu/main`
+    `https://applications-backend.herokuapp.com/yummy-menu/menu/main`
   );
 
   if (!data) {

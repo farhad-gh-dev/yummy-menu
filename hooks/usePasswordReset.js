@@ -2,7 +2,8 @@ import axios from "axios";
 import useError from "./useError";
 import { validPassword } from "../utils/FormValidation";
 
-const passwordResetURI = "http://192.168.1.6:8000/auth/password-reset";
+const passwordResetURI =
+  "https://applications-backend.herokuapp.com/auth/password-reset";
 
 const usePasswordReset = () => {
   const { errorObj, errorHandler } = useError();

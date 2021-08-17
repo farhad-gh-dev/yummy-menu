@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Router from "next/router";
 
-const tokenCheckURL = "http://192.168.1.6:8000/auth/user";
+const tokenCheckURL = "https://applications-backend.herokuapp.com/auth/user";
 
 const useTokenCheckInApp = () => {
   const [isLoading, setIsLoading] = useState(true);
