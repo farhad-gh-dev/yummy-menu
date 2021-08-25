@@ -18,7 +18,7 @@ export default function AuthFormPanel({
         <div className="guest-user-container text-center">
           <span className="text-cap">enter as</span>
           <button
-            className="guest-user-btn text-cap"
+            className="guest-user-btn text-cap cursor-pointer"
             onClick={() => guestUser()}
           >
             guest user
