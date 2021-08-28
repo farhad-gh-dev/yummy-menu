@@ -25,7 +25,7 @@ export default function Profile() {
     deleteUserHandler,
   } = useUserInfoEdit();
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <Loading themeIsDark={themeIsDark} />;
   return (
     <div
       className={`page-container user-page d-flex flex-column${
@@ -59,7 +59,7 @@ export default function Profile() {
               passwordResetHandler={passwordResetHandler}
             />
           ) : (
-            <Loading />
+            <Loading themeIsDark={themeIsDark} />
           )}
         </div>
         <div className="submit-buttons">

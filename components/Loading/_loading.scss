@@ -1,5 +1,7 @@
 .loading {
+  color: black;
   font-size: 1.3rem;
+
   .dots {
     margin-left: 8px;
     span {
@@ -16,6 +18,16 @@
       }
       &:nth-child(3) {
         animation-delay: 0.2s;
+      }
+    }
+  }
+
+  &.dark-theme {
+    color: #ffffff;
+
+    .dots {
+      span {
+        background-color: #ffffff;
       }
     }
   }

@@ -70,11 +70,13 @@ body {
 }
 
 .page-container {
-  background: red;
+  background: #ffffff;
+  background-color: #ffffff;
   background-image: $light_theme_bg !important;
 
   &.dark-theme {
-    background: red;
+    background: #000000;
+    background-color: #000000;
     background-image: $dark_theme_bg !important;
   }
 }

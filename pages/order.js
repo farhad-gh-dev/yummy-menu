@@ -24,7 +24,7 @@ export default function Order() {
     submitOrder,
   } = useOrderData();
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <Loading themeIsDark={themeIsDark} />;
   return (
     <div
       className={`page-container order-page d-flex flex-column${

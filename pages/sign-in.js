@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Link from "next/link";
 import { useState } from "react";
 import useAuthForm from "../hooks/useAuthForm";
 import useTokenCheckInAuth from "../hooks/useTokenCheckInAuth";
@@ -10,16 +9,11 @@ import Alert from "../components/Alerts/Alert";
 
 export default function signIn() {
   const { isLoading } = useTokenCheckInAuth();
-  const {
-    formData,
-    authError,
-    formHandler,
-    guestUser,
-    signInHandler,
-  } = useAuthForm({
-    usernameOrEmail: "",
-    password: "",
-  });
+  const { formData, authError, formHandler, guestUser, signInHandler } =
+    useAuthForm({
+      usernameOrEmail: "",
+      password: "",
+    });
 
   const [showPassword, setShowPassword] = useState(false);
 
