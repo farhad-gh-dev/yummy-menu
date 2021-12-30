@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function ItemCard({
   themeIsDark,
   itemData,
@@ -11,11 +13,17 @@ export default function ItemCard({
   if (!itemData) return null;
   return (
     <div className={`item-card p-relative${themeIsDark ? " dark-theme" : ""}`}>
-      <img
-        src={`/design-utils/item-card-${themeIsDark ? "dark-" : ""}bg.png`}
-        alt="card background"
-        className="background-shape"
-      />
+      <div className="background-shape">
+        <Image
+          src={`/design-utils/item-card-${themeIsDark ? "dark-" : ""}bg.png`}
+          alt="card background"
+          width={290}
+          height={350}
+          layout="fixed"
+          priority
+        />
+      </div>
+
       <div className="card-content cover-parent">
         <div className="item-image">
           <img src={itemData.image} alt="item image" />

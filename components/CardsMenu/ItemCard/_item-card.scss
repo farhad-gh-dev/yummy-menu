@@ -8,9 +8,12 @@
   }
 
   .background-shape {
-    height: auto;
-    max-height: 350px;
-    @include drop-shadow(5px, 0px, 15px, rgba(0, 0, 0, 0.1));
+    & > div {
+      overflow: unset !important;
+    }
+    img {
+      @include drop-shadow(5px, 0px, 15px, rgba(0, 0, 0, 0.1));
+    }
   }
 
   .card-content {
