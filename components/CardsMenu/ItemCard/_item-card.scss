@@ -57,6 +57,11 @@
       position: absolute;
       top: 50%;
       right: 16px;
+      display: none;
+
+      &.show {
+        display: unset;
+      }
 
       .increase,
       .decrease {

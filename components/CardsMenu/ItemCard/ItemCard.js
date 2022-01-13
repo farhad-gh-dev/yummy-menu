@@ -90,31 +90,31 @@ export default function ItemCard({
         >
           {itemOrderInfo ? "remove item" : "add item"}
         </button>
-        {itemOrderInfo ? (
-          <div className="item-counter text-center">
-            <button
-              className="increase"
-              onClick={() => increaseItemQuantity(itemData._id)}
-            >
-              <img
-                src={`/design-utils/increase${themeIsDark ? "-dark" : ""}.svg`}
-                alt="increase"
-              />
-            </button>
-            <div className="order-number text-weight-bold">
-              {itemOrderInfo.quantity}
-            </div>
-            <button
-              className="decrease"
-              onClick={() => decreaseItemQuantity(itemData._id)}
-            >
-              <img
-                src={`/design-utils/decrease${themeIsDark ? "-dark" : ""}.svg`}
-                alt="decease"
-              />
-            </button>
+        <div
+          className={`item-counter text-center${itemOrderInfo ? " show" : ""}`}
+        >
+          <button
+            className="increase"
+            onClick={() => increaseItemQuantity(itemData._id)}
+          >
+            <img
+              src={`/design-utils/increase${themeIsDark ? "-dark" : ""}.svg`}
+              alt="increase"
+            />
+          </button>
+          <div className="order-number text-weight-bold">
+            {itemOrderInfo ? itemOrderInfo.quantity : 0}
           </div>
-        ) : null}
+          <button
+            className="decrease"
+            onClick={() => decreaseItemQuantity(itemData._id)}
+          >
+            <img
+              src={`/design-utils/decrease${themeIsDark ? "-dark" : ""}.svg`}
+              alt="decease"
+            />
+          </button>
+        </div>
       </div>
     </div>
   );
