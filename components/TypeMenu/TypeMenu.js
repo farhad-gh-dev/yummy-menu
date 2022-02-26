@@ -19,7 +19,7 @@ export default function TypeMenu({
           >
             <div className="item-title text-center text-cap">{item.title}</div>
             <div
-              className="p-relative"
+              className="p-relative type-image-container"
               onClick={() => activeTypeHandler(item.title)}
             >
               <img

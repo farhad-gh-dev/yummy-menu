@@ -8,6 +8,10 @@
     position: relative;
     text-align: center;
 
+    .type-image-container {
+      cursor: pointer;
+    }
+
     &.active {
       .item-title {
         transform: scale(1.25);
