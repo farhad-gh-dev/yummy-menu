@@ -18,8 +18,8 @@
 
 @mixin desktop-scrollbar() {
   &::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
   }
 
   &::-webkit-scrollbar-track {
@@ -34,10 +34,6 @@
     background: #cbdaf1;
     border-radius: 5px;
   }
-
-  // &::-webkit-scrollbar-thumb:hover {
-  //   background: #555;
-  // }
 }
 
 @mixin desktop-scrollbar-dark() {
@@ -47,8 +43,4 @@
     background: #35393e;
     border-radius: 5px;
   }
-
-  // &::-webkit-scrollbar-thumb:hover {
-  //   background: #555;
-  // }
 }
