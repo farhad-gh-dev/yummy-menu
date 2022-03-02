@@ -1,34 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Yummy Menu
 
-## Getting Started
+A fast-food application with Next JS.
 
-First, run the development server:
+![enter image description here](https://raw.githubusercontent.com/farhad-gh-dev/yummy-menu/main/public/design-utils/screenshot.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Pages
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Log In - Sign In
+- Menu
+- Basket
+- Profile
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Tech stack
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Next JS (Typescript) - React Hooks - Axios - Sass
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Development and Build
 
-## Learn More
+In case of any use of this project, contribution to my [github account](https://github.com/farhad-gh-dev) is needed. To use this template clone this repository or download it, then run **npm install** to install project packages.
 
-To learn more about Next.js, take a look at the following resources:
+    git clone https://github.com/farhad-gh-dev/yummy-menu.git
+    npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+\-
+Now in the project directory, you can run the app in the development mode.
+Open [http://localhost:3000](http://localhost:3000/) to view it in the browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+      npm run dev
 
-## Deploy on Vercel
+\-
+You can also build the app for production mode, It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+      npm run build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Now you can deploy this project! Vercel is a good option :)
+
+## Project Structure
+
+    .
+    ├── components
+    ├── design
+    ├── hooks
+    ├── pages
+    ├── public
+    ├── styles
+    ├── utils
+    ├── .gitignore
+    ├── package.json
+    ├── package-lock.json
+    └── README.md
+
+- Each component in components folder contains related style file (scss) and subcomponents if there are any
+- Design folder includes adobe xd files, icons and images used in the project
+- Hooks folder contains hooks used in pages directory (to handle business logic)
+- Public folder contains images and icons
+- Style Folder contains all global styles, style resets, style variables, mixins and breakpoints + each page's style file
+- Utils folder contains helper functions
