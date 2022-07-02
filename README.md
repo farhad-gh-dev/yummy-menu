@@ -2,7 +2,7 @@
 
 A fast-food application with Next JS.
 
-![enter image description here](https://raw.githubusercontent.com/farhad-gh-dev/yummy-menu/main/public/design-utils/screenshot.png)
+![Yummy menu screenshot](https://raw.githubusercontent.com/farhad-gh-dev/yummy-menu/main/public/design-utils/screenshot.png)
 
 ## Pages
 
