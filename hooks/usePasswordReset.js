@@ -3,7 +3,7 @@ import useError from "./useError";
 import { validPassword } from "../utils/FormValidation";
 
 const passwordResetURI =
-  "https://applications-backend.herokuapp.com/auth/password-reset";
+  "https://apiv10-production.up.railway.app/auth/password-reset";
 
 const usePasswordReset = () => {
   const { errorObj, errorHandler } = useError();

@@ -4,8 +4,8 @@ import Router from "next/router";
 import { signInValidation, singUpValidation } from "../utils/FormValidation";
 import useError from "./useError";
 
-const signInURL = "https://applications-backend.herokuapp.com/auth/login";
-const signUpURL = "https://applications-backend.herokuapp.com/auth/register";
+const signInURL = "https://apiv10-production.up.railway.app/auth/login";
+const signUpURL = "https://apiv10-production.up.railway.app/auth/register";
 
 const useAuth = (initialValues = null) => {
   const [formData, setFromData] = useState(initialValues);
