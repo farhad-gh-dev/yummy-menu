@@ -64,9 +64,9 @@ export default function Order() {
         <div className="section-container d-flex flex-column flex-fill p-relative">
           <div className="empty-order cover-parent d-flex flex-column justify-content-center align-items-center">
             <div className="message-title text-cap text-weight-bold">
-              {"no order".split("").map((l) => {
-                if (l === " ") return <span className="space"></span>;
-                return <span>{l}</span>;
+              {"no order".split("").map((l, i) => {
+                if (l === " ") return <span key={i} className="space"></span>;
+                return <span key={i}>{l}</span>;
               })}
             </div>
             <div className="redirect-link text-cap">
