@@ -13,7 +13,7 @@ A fast-food application with Next JS.
 
 ## Tech stack
 
-Next JS (Typescript) - React Hooks - Axios - Sass
+Next JS (JavaScript) - React Hooks - Axios - Sass
 
 ## Development and Build
 
