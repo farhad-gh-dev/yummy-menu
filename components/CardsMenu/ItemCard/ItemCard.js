@@ -111,7 +111,7 @@ export default function ItemCard({
           >
             <img
               src={`/design-utils/decrease${themeIsDark ? "-dark" : ""}.svg`}
-              alt="decease"
+              alt="decrease"
             />
           </button>
         </div>
