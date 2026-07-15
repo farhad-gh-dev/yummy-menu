@@ -134,9 +134,7 @@ const useUserInfoEdit = () => {
 
         setPrevUserInfo(data);
         setUserInfo(data);
-      } catch {
-        console.log("Error...");
-      }
+      } catch {}
     };
 
     getUserInfo();
