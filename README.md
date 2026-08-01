@@ -29,7 +29,7 @@ Open [http://localhost:3000](http://localhost:3000/) to view it in the browser.
       npm run dev
 
 \-
-You can also build the app for production mode, It correctly bundles React in production mode and optimizes the build for the best performance.
+You can also build the app for production mode. It correctly bundles React in production mode and optimizes the build for the best performance.
 
       npm run build
 
