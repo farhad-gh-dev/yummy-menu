@@ -51,7 +51,7 @@ Now you can deploy this project! Vercel is a good option :)
     └── README.md
 
 - Each component in components folder contains related style file (scss) and subcomponents if there are any
-- Design folder includes adobe xd files, icons and images used in the project
+- Design folder includes Adobe XD files, icons and images used in the project
 - Hooks folder contains hooks used in pages directory (to handle business logic)
 - Public folder contains images and icons
 - Style Folder contains all global styles, style resets, style variables, mixins and breakpoints + each page's style file
