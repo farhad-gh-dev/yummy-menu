@@ -23,7 +23,7 @@ In case of any use of this project, contribution to my [github account](https://
     npm install
 
 \-
-Now in the project directory, you can run the app in the development mode.
+Now in the project directory, you can run the app in development mode.
 Open [http://localhost:3000](http://localhost:3000/) to view it in the browser.
 
       npm run dev
