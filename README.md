@@ -17,7 +17,7 @@ Next JS (JavaScript) - React Hooks - Axios - Sass
 
 ## Development and Build
 
-In case of any use of this project, contribution to my [github account](https://github.com/farhad-gh-dev) is needed. To use this template clone this repository or download it, then run **npm install** to install project packages.
+In case of any use of this project, attribution to my [github account](https://github.com/farhad-gh-dev) is needed. To use this template clone this repository or download it, then run **npm install** to install project packages.
 
     git clone https://github.com/farhad-gh-dev/yummy-menu.git
     npm install
