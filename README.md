@@ -1,6 +1,6 @@
 # Yummy Menu
 
-A fast-food application with Next JS.
+A fast-food application with Next.js.
 
 ![Yummy menu screenshot](https://raw.githubusercontent.com/farhad-gh-dev/yummy-menu/main/public/design-utils/screenshot.png)
 
@@ -13,7 +13,7 @@ A fast-food application with Next JS.
 
 ## Tech stack
 
-Next JS (JavaScript) - React Hooks - Axios - Sass
+Next.js (JavaScript) - React Hooks - Axios - Sass
 
 ## Development and Build
 
